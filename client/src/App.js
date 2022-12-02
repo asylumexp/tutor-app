@@ -1,29 +1,29 @@
-import React, { useEffect, useState } from 'react'
+import React, { Component } from "react";
+import './App.css';
 
-function App() {
-  const [backendData, setBackendData] = useState([{}])
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { apiResponse: "" };
+  }
+
+  callAPI() {
+      fetch("http://localhost:9000/testAPI")
+          .then(res => res.text())
+          .then(res => this.setState({ apiResponse: res }));
+  }
+
+  componentWillMount() {
+      this.callAPI();
+  }
   
-  useEffect(() => {
-    fetch("http://localhost:5000/api").then(
-      response => response.json()
-    ).then(
-      data => {
-        setBackendData(data)
-      }
-    )
-  }, [])
-
-  return (
-    <div>
-      {(typeof backendData.users === 'undefined') ? (
-        <p>Loading...</p>
-      ): (
-        backendData.users.map((user, i) => (
-          <p key={i}>{user}</p>
-        ))
-      )}
-    </div>
-  )
+  render() {
+    return (
+      <div>
+        <p className="App-intro">;{this.state.apiResponse}</p>
+      </div>
+    );
+  }
+  
 }
-
-export default App
+export default App;
