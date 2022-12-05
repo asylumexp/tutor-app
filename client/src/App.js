@@ -1,24 +1,72 @@
-import React from "react";
-import { Navbar, Nav } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Navbar, Nav, Container, Row, Col } from "react-bootstrap";
 
 function App() {
+  const [backendData, setBackendData] = useState([{}]);
+
+  useEffect(() => {
+    fetch("http://localhost:9000/testapi")
+      .then((response) => response.json())
+      .then((data) => {
+        setBackendData(data);
+      });
+  }, []);
+
   return (
-    <Navbar
-      bg="dark"
-      variant="dark"
-      style={{
-        position: "fixed",
-        left: "200px",
-        width: "calc(100% - 200px)",
-        height: "50px",
-      }}
-    >
-      <Nav>
-        <Nav.Link href="http://example.com">Home</Nav.Link>
-        <Nav.Link href="http://example.com/orders">Orders</Nav.Link>
-        <Nav.Link href="http://example.com/settings">Settings</Nav.Link>
-      </Nav>
-    </Navbar>
+    <>
+      <Navbar
+        bg="dark"
+        variant="dark"
+        style={{
+          position: "fixed",
+          left: "12.5%",
+          width: "calc(100% - 12.5%)",
+          height: "50px",
+        }}
+      >
+        <Nav>
+          <Nav.Link href="http://example.com">Home</Nav.Link>
+          <Nav.Link href="http://example.com/orders">Orders</Nav.Link>
+          <Nav.Link href="http://example.com/settings">Settings</Nav.Link>
+        </Nav>
+      </Navbar>
+      <Container>
+        <Row>
+          <Col
+            bg="dark"
+            varient="dark"
+            width="50px"
+            style={{
+              backgroundColor: "#212529",
+              position: "fixed",
+              left: "0",
+              width: "12.5%",
+              height: "100%",
+            }}
+          >
+            <img
+              src="https://via.placeholder.com/200x50.png"
+              alt="Sidebar title"
+              style={{ width: "103.5%", height: "50px" }}
+            />
+            {typeof backendData.user === "undefined" ? (
+              <p style={{ color: "white" }}>Loading...</p>
+            ) : (
+              backendData.user.map((user, i) => (
+                <p
+                  key={i}
+                  style={{
+                    color: "white",
+                  }}
+                >
+                  {user}
+                </p>
+              ))
+            )}
+          </Col>
+        </Row>
+      </Container>
+    </>
   );
 }
 
