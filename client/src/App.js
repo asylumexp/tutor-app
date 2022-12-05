@@ -1,24 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { Navbar, Nav } from "react-bootstrap";
 
 function App() {
-  const [backendData, setBackendData] = useState([{}]);
-
-  useEffect(() => {
-    fetch("http://localhost:9000/testapi")
-      .then((response) => response.json())
-      .then((data) => {
-        setBackendData(data);
-      });
-  }, []);
-
   return (
-    <div>
-      {typeof backendData.user === "undefined" ? (
-        <p>Loading...</p>
-      ) : (
-        backendData.user.map((user, i) => <p key={i}>{user}</p>)
-      )}
-    </div>
+    <Navbar
+      bg="dark"
+      variant="dark"
+      style={{
+        position: "fixed",
+        left: "200px",
+        width: "calc(100% - 200px)",
+        height: "50px",
+      }}
+    >
+      <Nav>
+        <Nav.Link href="http://example.com">Home</Nav.Link>
+        <Nav.Link href="http://example.com/orders">Orders</Nav.Link>
+        <Nav.Link href="http://example.com/settings">Settings</Nav.Link>
+      </Nav>
+    </Navbar>
   );
 }
 
