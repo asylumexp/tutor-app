@@ -48,7 +48,7 @@ function App() {
             <img
               src={logo}
               alt="Sidebar title"
-              style={{ width: "103.5%", height: "50px" }}
+              style={{ width: "100%", height: "50px" }}
             />
             {typeof backendData.user === "undefined" ? (
               <p style={{ color: "white" }}>Loading...</p>
