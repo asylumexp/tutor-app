@@ -3,6 +3,7 @@ import { Navbar, Nav, Container, Row, Col } from "react-bootstrap";
 
 function App() {
   const [backendData, setBackendData] = useState([{}]);
+  const logo = require("./assets/tutor-app-logos_transparent_alt.png");
 
   useEffect(() => {
     fetch("http://localhost:9000/testapi")
@@ -45,7 +46,7 @@ function App() {
             }}
           >
             <img
-              src="https://via.placeholder.com/200x50.png"
+              src={logo}
               alt="Sidebar title"
               style={{ width: "103.5%", height: "50px" }}
             />
