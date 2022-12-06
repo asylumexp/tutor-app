@@ -37,12 +37,12 @@ function App() {
           <Col
             bg="dark"
             varient="dark"
-            width="50px"
+            width="60px"
             style={{
               backgroundColor: "#33393E",
               position: "fixed",
               left: "0",
-              width: "13.5%",
+              width: "14.5%",
               height: "100%",
             }}
           >
