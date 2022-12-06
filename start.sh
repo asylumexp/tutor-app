@@ -24,6 +24,8 @@ elif [[ "$OSTYPE" == "msys" ]]; then
         if [ "$text" == 'restart' ]; then
             powershell -File ./start.ps1
             ./start.sh
+        elif [ "$text" == 'kill' ]; then
+            powershell -File ./start.ps1
         fi
 else
         echo 'Unsupported'
