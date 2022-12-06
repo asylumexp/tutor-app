@@ -12,6 +12,8 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
         if [ "$text" == 'restart' ]; then
             killall -e node
             ./start.sh
+        elif [ "$text" == 'kill' ]; then
+            killall -e node
         fi
 elif [[ "$OSTYPE" == "darwin"* ]]; then
         if [ "$text" == 'restart' ]; then
