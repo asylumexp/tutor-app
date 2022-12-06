@@ -4,7 +4,8 @@ module.exports = mongoose => {
       mongoose.Schema(
         {
           name: String,
-          age: String,
+          email: String,
+          password: String
         },
         { timestamps: true }
       )
