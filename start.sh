@@ -4,7 +4,7 @@ dir=$(pwd)
 sh="$dir/start.sh"
 cd ./server
 
-npm start & cd ../client && npm start & echo 'Client and Server started' & cd ..
+npm start & cd .. && cd ./client && npm start & echo 'Client and Server started' & cd ..
 
 read text
 
