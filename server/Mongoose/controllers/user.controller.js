@@ -15,7 +15,7 @@ exports.create = (req, res) => {
 
     const user = new User({
       name: req.body.name,
-      age: req.body.email,
+      email: req.body.email,
       password: req.body.password
     });
 
@@ -57,7 +57,7 @@ exports.create = (req, res) => {
     
     const user = new User({
       name: req.body.name,
-      age: req.body.email,
+      email: req.body.email,
       password: Bcrypt.hashSync(req.body.password, 10)
     });
 
