@@ -19,8 +19,8 @@ struct tutorAppApp: App {
         guard let url = URL(string: "https://jsonplaceholder.typicode.com/posts/1") else{
             return
         }
-
-
+        
+        
         let task = URLSession.shared.dataTask(with: url){
             data, response, error in
             
@@ -28,7 +28,7 @@ struct tutorAppApp: App {
                 print(string)
             }
         }
-
+        
         task.resume()
     }
 }
