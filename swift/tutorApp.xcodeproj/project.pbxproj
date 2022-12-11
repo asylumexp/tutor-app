@@ -11,6 +11,7 @@
 		520DC0A7293990900078E9E6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520DC0A6293990900078E9E6 /* ContentView.swift */; };
 		520DC0A9293990910078E9E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 520DC0A8293990910078E9E6 /* Assets.xcassets */; };
 		520DC0AC293990910078E9E6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 520DC0AB293990910078E9E6 /* Preview Assets.xcassets */; };
+		5242346C2945BE6E0086AA3B /* menubarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5242346B2945BE6E0086AA3B /* menubarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		520DC0A6293990900078E9E6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		520DC0A8293990910078E9E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		520DC0AB293990910078E9E6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5242346B2945BE6E0086AA3B /* menubarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menubarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				520DC0A4293990900078E9E6 /* tutorAppApp.swift */,
 				520DC0A6293990900078E9E6 /* ContentView.swift */,
+				5242346B2945BE6E0086AA3B /* menubarView.swift */,
 				520DC0A8293990910078E9E6 /* Assets.xcassets */,
 				520DC0AA293990910078E9E6 /* Preview Content */,
 			);
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5242346C2945BE6E0086AA3B /* menubarView.swift in Sources */,
 				520DC0A7293990900078E9E6 /* ContentView.swift in Sources */,
 				520DC0A5293990900078E9E6 /* tutorAppApp.swift in Sources */,
 			);
