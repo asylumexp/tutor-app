@@ -3,7 +3,6 @@
 //  tutorApp
 //
 //  Created by Samuel Heinz on 2/12/2022.
-//  Reviewed by Willima Coggins on 11/12/2022.
 //
 
 import SwiftUI
