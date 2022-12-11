@@ -5,7 +5,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require("cors");
-var db = require("./Mongoose/models")
+var db = require("./Mongoose/models");
+var jsonWebToken = require("jsonwebtoken");
+var Bcrypt=require("bcryptjs")
 
 //start app
 var app = express();

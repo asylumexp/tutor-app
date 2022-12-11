@@ -8,5 +8,6 @@ var router = express.Router();
 // });
 router.post("/",users.create);
 router.get("/",users.findAll);
+router.post("/signup",users.signUp)
 
 module.exports = router;
