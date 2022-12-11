@@ -11,6 +11,8 @@
 		520DC0A7293990900078E9E6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520DC0A6293990900078E9E6 /* ContentView.swift */; };
 		520DC0A9293990910078E9E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 520DC0A8293990910078E9E6 /* Assets.xcassets */; };
 		520DC0AC293990910078E9E6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 520DC0AB293990910078E9E6 /* Preview Assets.xcassets */; };
+		52233F8129461537005440A8 /* buttonSchemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52233F8029461537005440A8 /* buttonSchemes.swift */; };
+		52233F8329461840005440A8 /* functionsJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52233F8229461840005440A8 /* functionsJSON.swift */; };
 		5242346C2945BE6E0086AA3B /* menubarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5242346B2945BE6E0086AA3B /* menubarView.swift */; };
 /* End PBXBuildFile section */
 
@@ -20,6 +22,8 @@
 		520DC0A6293990900078E9E6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		520DC0A8293990910078E9E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		520DC0AB293990910078E9E6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		52233F8029461537005440A8 /* buttonSchemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = buttonSchemes.swift; sourceTree = "<group>"; };
+		52233F8229461840005440A8 /* functionsJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = functionsJSON.swift; sourceTree = "<group>"; };
 		5242346B2945BE6E0086AA3B /* menubarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menubarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -53,6 +57,8 @@
 		520DC0A3293990900078E9E6 /* tutorApp */ = {
 			isa = PBXGroup;
 			children = (
+				52233F8229461840005440A8 /* functionsJSON.swift */,
+				52233F8029461537005440A8 /* buttonSchemes.swift */,
 				520DC0A4293990900078E9E6 /* tutorAppApp.swift */,
 				520DC0A6293990900078E9E6 /* ContentView.swift */,
 				5242346B2945BE6E0086AA3B /* menubarView.swift */,
@@ -141,7 +147,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5242346C2945BE6E0086AA3B /* menubarView.swift in Sources */,
+				52233F8329461840005440A8 /* functionsJSON.swift in Sources */,
 				520DC0A7293990900078E9E6 /* ContentView.swift in Sources */,
+				52233F8129461537005440A8 /* buttonSchemes.swift in Sources */,
 				520DC0A5293990900078E9E6 /* tutorAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
