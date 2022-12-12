@@ -13,7 +13,7 @@ func POST(inputURL: String) {
     
     components.queryItems = [
         URLQueryItem(name: "name", value: "name"),
-        URLQueryItem(name: "email", value: "email"),
+        URLQueryItem(name: "email", value: "email2"),
         URLQueryItem(name: "password", value: "password")
     ]
     
@@ -51,7 +51,7 @@ func FETCH(inputURL: String, Parse: Bool){
                 do{
                     let tasks = try decoder.decode([userArray].self, from: data)
                     tasks.forEach{ i in
-                        print(i.name)
+                        print(i)
                     }
                 }catch{
                     print(error)

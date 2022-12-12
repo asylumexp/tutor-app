@@ -7,31 +7,20 @@
 
 import SwiftUI
 
-struct userArray:Codable {
-    let _id: String
-    let name: String
-    let email: String
-    let password: String
-    let createdAt: String
-    let updatedAt: String
-    let __v: Int
-}
-
 struct ContentView: View {
+    @State private var testingView = true
+    
     var body: some View {
-        ZStack {
-            LinearGradient(gradient: Gradient(colors: [.red, .blue]), startPoint: .top, endPoint: .bottom)
-                .ignoresSafeArea(edges: .all)
-            VStack {
-                Button(action: {
-                    print("MyNewPrimitiveButton triggered. Is it printed ?")
-                }){ Text("bing chilling ").padding() }
-                    .buttonStyle(MyNewPrimitiveButtonStyle(color: .yellow))
-                
-            }
+        if testingView {
+            buttonView(parentVar: $testingView)
+        } else {
+            signInView()
         }
     }
 }
 
-
-
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
