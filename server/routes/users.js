@@ -6,6 +6,7 @@ var router = express.Router();
 // router.get('/', function(req, res, next) {
 //   res.send('respond with a resource');
 // });
+router.post("/", users.create);
 router.get("/", users.findAll);
 router.post("/signup", users.signUp);
 router.post("/signin", users.signIn);
