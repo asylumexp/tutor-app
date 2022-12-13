@@ -43,7 +43,7 @@ func signUp() {
     
     components.queryItems = [
         URLQueryItem(name: "name", value: "name"),
-        URLQueryItem(name: "email", value: "email2"),
+        URLQueryItem(name: "email", value: "email"),
         URLQueryItem(name: "password", value: "password")
     ]
     
@@ -53,13 +53,17 @@ func signUp() {
     request.httpBody = Data(query!.utf8)
     let session = URLSession.shared
     session.dataTask(with: request) { (data, response, error) in
+        
         if let response = response {
             print(response)
         }
         if let data = data {
             do {
-                let json = try JSONSerialization.jsonObject(with: data, options: [])
-                print(json)
+                var response = [:]
+                let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:Any]
+                response = json.unsafelyUnwrapped
+                print(response[AnyHashable("success")]!)
+                print(response[AnyHashable("token")]!)
             } catch {
                 print(error)
             }
@@ -87,8 +91,11 @@ func signIn() {
         }
         if let data = data {
             do {
-                let json = try JSONSerialization.jsonObject(with: data, options: [])
-                print(json)
+                var response = [:]
+                let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:Any]
+                response = json.unsafelyUnwrapped
+                print(response[AnyHashable("success")]!)
+                print(response[AnyHashable("token")]!)
             } catch {
                 print(error)
             }
