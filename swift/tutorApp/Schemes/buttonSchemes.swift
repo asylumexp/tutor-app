@@ -50,8 +50,7 @@ struct MyNewPrimitiveButtonStyle: PrimitiveButtonStyle {
                     }
                     if pressing {
                         print("My long pressed starts")
-//                        FETCH(inputURL: "http://localhost:9000/users", Parse: true)
-//                        updateView(variable: parentVar)
+                        signIn()
                     } else {
                         print("My long pressed ends")
                         updateView(variable: parentVar)
