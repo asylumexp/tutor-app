@@ -1,73 +1,52 @@
 import React, { useEffect, useState } from "react";
 import { Navbar, Nav, Container, Row, Col } from "react-bootstrap";
-
+import './App.css';
 function App() {
   const [backendData, setBackendData] = useState([{}]);
   const logo = require("./assets/tutor-app-logos_transparent_alt.png");
-
   useEffect(() => {
-    fetch("http://localhost:9000/testapi")
+    fetch("http://localhost:9000/users")
       .then((response) => response.json())
       .then((data) => {
-        setBackendData(data);
+        console.log(data)
       });
   }, []);
 
+  function Login() {
+    console.log(document.getElementById('name').value);
+    console.log(document.getElementById('name1').value)
+    
+  }
+
   return (
-    <>
-      <Navbar
-        bg="dark"
-        variant="dark"
-        style={{
-          position: "fixed",
-          left: "12.5%",
-          width: "calc(100% - 12.5%)",
-          height: "50px",
-        }}
-      >
-        <Nav>
-          <Nav.Link href="http://example.com">Home</Nav.Link>
-          <Nav.Link href="http://example.com/orders">Orders</Nav.Link>
-          <Nav.Link href="http://example.com/settings">Settings</Nav.Link>
-        </Nav>
-      </Navbar>
-      <Container>
-        <Row>
-          <Col
-            bg="dark"
-            varient="dark"
-            width="50px"
-            style={{
-              backgroundColor: "#212529",
-              position: "fixed",
-              left: "0",
-              width: "12.5%",
-              height: "100%",
-            }}
-          >
-            <img
-              src={logo}
-              alt="Sidebar title"
-              style={{ width: "100%", height: "50px" }}
-            />
-            {typeof backendData.user === "undefined" ? (
-              <p style={{ color: "white" }}>Loading...</p>
-            ) : (
-              backendData.user.map((user, i) => (
-                <p
-                  key={i}
-                  style={{
-                    color: "white",
-                  }}
-                >
-                  {user}
-                </p>
-              ))
-            )}
-          </Col>
-        </Row>
-      </Container>
-    </>
+    <div className="App">
+      <h1> Login In!</h1>
+      <spacer type="horizontal" width="5" height="5"> ‎ </spacer>
+      <form onsubmit="console.log('You clicked submit.'); return false">
+        <label>
+          Email:
+          <input
+          id="name"
+            type="text"
+            name="email" />
+        </label>
+        <spacer type="horizontal" width="5" height="5"> ‎ </spacer>
+        <label>
+          Password:
+          <input
+          id="name1"
+            type="text"
+            name1="password" />
+        </label>
+        </form>
+        <button onClick={Login}>Log In </button>
+        <spacer type="horizontal" width="5" height="5"> ‎ </spacer>
+
+        <p>Not Already Signed Up?, Click Here: <a href="http://example.com">Sign Up!</a></p> 
+     
+
+
+    </div>
   );
 }
 
