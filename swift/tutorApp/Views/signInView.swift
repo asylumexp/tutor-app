@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct signInView: View {
-    @State private var state = false
+    @State var parentVar: Binding<String>
+    init(parentVar: Binding<String>) {
+        self.parentVar = parentVar
+    }
     var body: some View {
         ZStack {
             LinearGradient(gradient: Gradient(colors: [.init(hex: "071B33"), .init(hex: "833F46"), .init(hex: "FFB123")]), startPoint: .topTrailing, endPoint: .bottomLeading)
@@ -17,15 +20,11 @@ struct signInView: View {
                 Button(action: {
                     print("MyNewPrimitiveButton triggered. Is it printed ?")
                 }){ Text("amazing app").padding() }
-                    .buttonStyle(MyNewPrimitiveButtonStyle(color: .yellow, parentChange: $state))
+                    .buttonStyle(MyNewPrimitiveButtonStyle(color: .yellow, parentChange: parentVar))
                 
             }
         }
     }
 }
 
-struct signInView_Previews: PreviewProvider {
-    static var previews: some View {
-        signInView()
-    }
-}
+

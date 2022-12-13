@@ -8,16 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var testingView = true
+    @State private var temp = "signInView"
     
     var body: some View {
-        if testingView {
-            buttonView(parentVar: $testingView)
-        } else {
-            signInView()
+        if (temp == "signInView") {
+            signInView(parentVar: $temp)
+        } else if (temp == "buttonView") {
+            buttonView(parentVar: $temp)
         }
     }
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

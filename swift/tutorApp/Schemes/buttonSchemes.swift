@@ -7,7 +7,7 @@
 
 import SwiftUI
 struct buttonSchemes: View {
-    @State private var temp = false
+    @State private var temp = "signInView"
     var body: some View {
         ZStack {
             VStack {
@@ -22,7 +22,7 @@ struct buttonSchemes: View {
 
 struct MyNewPrimitiveButtonStyle: PrimitiveButtonStyle {
     var color: Color
-    var parentChange: Binding<Bool>
+    var parentChange: Binding<String>
     
     func makeBody(configuration: PrimitiveButtonStyle.Configuration) -> some View {
         MyButton(parentVar: parentChange, configuration: configuration, color: color)
@@ -30,7 +30,7 @@ struct MyNewPrimitiveButtonStyle: PrimitiveButtonStyle {
     
     struct MyButton: View {
         @State private var pressed = false
-        let parentVar: Binding<Bool>
+        let parentVar: Binding<String>
         let configuration: PrimitiveButtonStyle.Configuration
         let color: Color
         
@@ -50,11 +50,11 @@ struct MyNewPrimitiveButtonStyle: PrimitiveButtonStyle {
                     }
                     if pressing {
                         print("My long pressed starts")
-                        FETCH(inputURL: "http://localhost:9000/users", Parse: true)
-                        updateView(variable: parentVar)
+//                        FETCH(inputURL: "http://localhost:9000/users", Parse: true)
+//                        updateView(variable: parentVar)
                     } else {
                         print("My long pressed ends")
-                        parentVar.wrappedValue = false
+                        updateView(variable: parentVar)
 //                        POST(inputURL: "http://localhost:9000/users/signup")
                     }
                 }, perform: { })

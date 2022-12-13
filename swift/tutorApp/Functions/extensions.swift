@@ -8,6 +8,11 @@
 import Foundation
 import SwiftUI
 
+extension Bool {
+    mutating func reverse() {
+        self = !self
+    }
+}
 extension Color {
     init(hex: String) {
         let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)

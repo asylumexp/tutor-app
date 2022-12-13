@@ -18,9 +18,9 @@ struct userArray:Codable {
 }
 
 struct buttonView: View {
-    private var parentVar: Binding<Bool>
+    private var parentVar: Binding<String>
     
-    init(parentVar: Binding<Bool>) {
+    init(parentVar: Binding<String>) {
         self.parentVar = parentVar
     }
     
