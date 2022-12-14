@@ -116,7 +116,7 @@ exports.signUp = (req, res) => {
             { expiresIn: "10m" }
           );
           const REFRESH_TOKEN = jsonWebToken.sign(
-            { id: user._id },
+            { id: user._id, email: user.email },
             REFRESH_TOKEN_SECRET,
             { expiresIn: "5d" }
           );
@@ -177,4 +177,28 @@ exports.signIn = (req, res) => {
     .catch((err) => {
       res.json({ success: false, error: err });
     });
+};
+
+exports.refresh = (req, res) => {
+  if (req.cookies?.jwt) {
+    const REFRESH_TOKEN = req.cookies.jwt;
+    try {
+      decoded = jsonWebToken.verify(REFRESH_TOKEN, REFRESH_TOKEN_SECRET);
+    } catch (e) {
+      return res.status(406).json({ error: "Unauthorized1" });
+    }
+    jwt.verify(REFRESH_TOKEN, REFRESH_TOKEN_SECRET, (err, decoded) => {
+      if (err) {
+        return res.status(406).json({ error: "Unauthorized2" });
+      } else {
+        const ACCESS_TOKEN = jwt.sign(
+          { id: decoded.id, email: decoded.email },
+          ACCESS_TOKEN_SECRET,
+          { expiresIn: "10m" }
+        );
+      }
+    });
+  } else {
+    return res.status(406).json({ error: "Unauthorized3" });
+  }
 };
