@@ -1,10 +1,14 @@
 const jsonWebToken = require("jsonwebtoken");
 const db = require("../models");
 var Bcrypt = require("bcryptjs");
+var cookieParser = require("cookie-parser");
 const { users } = require("../models");
 const User = db.users;
-const SECRET_JWT_CODE =
+const ACCESS_TOKEN_SECRET =
   "JKLkdijI2JKLD33JD3kldkdk87JKDLI37838jlkDjsk73kjdidjkjsamuelHheinz";
+const REFRESH_TOKEN_SECRET =
+  "liawe;jfkaa nmcvlnmda,mfldksdfmkljeimnxcklsljskdjfalamsamuelheinzandcoreyahahahahahhhhkdh8e8ekcailked";
+
 console.log(User);
 
 function fetchUserByToken(req) {
@@ -13,7 +17,7 @@ function fetchUserByToken(req) {
       let authorization = req.header.authorization;
       let decoded;
       try {
-        decoded = jsonWebToken.verify(authorization, SECRET_JWT_CODE);
+        decoded = jsonWebToken.verify(authorization, ACCESS_TOKEN_SECRET);
       } catch (e) {
         reject("Token not valid");
         return;
@@ -106,11 +110,22 @@ exports.signUp = (req, res) => {
       user
         .save(user)
         .then((user) => {
-          const token = jsonWebToken.sign(
+          const ACCESS_TOKEN = jsonWebToken.sign(
             { id: user._id, email: user.email },
-            SECRET_JWT_CODE
+            ACCESS_TOKEN_SECRET,
+            { expiresIn: "10m" }
           );
-          res.json({ success: true, token: token });
+          const REFRESH_TOKEN = jsonWebToken.sign(
+            { id: user._id },
+            REFRESH_TOKEN_SECRET,
+            { expiresIn: "5d" }
+          );
+          res.cookie("jwt", REFRESH_TOKEN, {
+            httpOnly: true,
+            secure: true,
+            maxAge: 24 * 60 * 60 * 1000,
+          });
+          res.json({ success: true, token: ACCESS_TOKEN });
         })
         .catch((err) => {
           res.status(500).send({
@@ -138,8 +153,23 @@ exports.signIn = (req, res) => {
         } else {
           const token = jsonWebToken.sign(
             { id: user._id, email: user.email },
-            SECRET_JWT_CODE
+            ACCESS_TOKEN_SECRET
           );
+          const REFRESH_TOKEN = jsonWebToken.sign(
+            { id: user._id },
+            REFRESH_TOKEN_SECRET,
+            { expiresIn: "5d" }
+          );
+          try {
+            res.cookie("jwt", REFRESH_TOKEN, {
+              httpOnly: true,
+              secure: true,
+              maxAge: 24 * 60 * 60 * 1000,
+            });
+          } catch (e) {
+            console.log(e);
+          }
+
           res.json({ success: true, token: token });
         }
       }
