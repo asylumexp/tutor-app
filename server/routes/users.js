@@ -11,5 +11,6 @@ router.get("/", users.findAll);
 router.post("/signup", users.signUp);
 router.post("/signin", users.signIn);
 router.post("/refresh", users.refresh);
+router.get("/valid", users.validToken);
 
 module.exports = router;

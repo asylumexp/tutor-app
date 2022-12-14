@@ -202,3 +202,14 @@ exports.refresh = (req, res) => {
     return res.status(406).json({ error: "Unauthorized3" });
   }
 };
+
+exports.validToken = (req, res) => {
+  let authorization = req.headers.authorization;
+  let decoded;
+  try {
+    decoded = jsonWebToken.verify(authorization, ACCESS_TOKEN_SECRET);
+  } catch (e) {
+    return res.json({ success: false });
+  }
+  return res.json({ success: true });
+};
