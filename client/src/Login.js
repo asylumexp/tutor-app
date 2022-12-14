@@ -1,5 +1,3 @@
-import React, { useEffect, useState } from "react";
-
 function LoginExternel(emailInput, passwordInput) {
   console.log(emailInput);
   console.log(passwordInput);
