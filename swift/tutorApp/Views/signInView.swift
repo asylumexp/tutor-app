@@ -21,7 +21,7 @@ struct signInView: View {
                     .ignoresSafeArea(edges: .all)
                 TextField("Placeholder", text: $text)
                     .padding(.horizontal, 50.0)
-                    .textFieldStyle(OutlinedTextFieldStyle(icon: Image(systemName: "lock")))
+                    .textFieldStyle(OutlinedTextFieldStyle(icon: Image(systemName: "pencil.line")))
                     .offset(y:-240)
                 SecureField("Placeholder", text: $text)
                     .padding(.horizontal, 50.0)
