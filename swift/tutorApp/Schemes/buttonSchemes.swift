@@ -97,10 +97,9 @@ struct MyLoginButton: PrimitiveButtonStyle {
                     }
                     if pressing {
                         print("My long pressed starts")
-                        signIn(email: email, password: password)
+                        signIn(email: email, password: password, parentVar: parentVar)
                     } else {
                         print("My long pressed ends")
-                        updateView(variable: parentVar)
 //                        POST(inputURL: "http://localhost:9000/users/signup")
                     }
                 }, perform: { })

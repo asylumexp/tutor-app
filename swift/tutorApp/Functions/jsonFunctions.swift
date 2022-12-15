@@ -78,7 +78,29 @@ func signUp(name: Binding<String>, email: Binding<String>, password: Binding<Str
         URLQueryItem(name: "password", value: password.wrappedValue)
     ]
     
-    let query = components.url!.query
+    signInUpPOST(component: components, parentVar: parentVar, url: url)
+}
+
+
+func signIn(email: Binding<String>, password: Binding<String>, parentVar: Binding<String>) {
+    let url = URL(string: "http://localhost:9000/users/signin")!
+    var components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
+    components.queryItems = [
+        URLQueryItem(name: "email", value: email.wrappedValue),
+        URLQueryItem(name: "password", value: password.wrappedValue)
+    ]
+    signInUpPOST(component: components, parentVar: parentVar, url: url)
+}
+
+func saveCookie(Cookie: String, Token: String) {
+    let defaults = UserDefaults.standard
+    defaults.set(Cookie, forKey: DefaultsKeys.cookie)
+    defaults.set(Token, forKey: DefaultsKeys.token)
+}
+
+
+func signInUpPOST(component: URLComponents, parentVar: Binding<String>, url: URL) {
+    let query = component.url!.query
     var request = URLRequest(url: url)
     request.httpMethod = "POST"
     request.httpBody = Data(query!.utf8)
@@ -103,47 +125,3 @@ func signUp(name: Binding<String>, email: Binding<String>, password: Binding<Str
         }
     }.resume()
 }
-
-
-func signIn(email: Binding<String>, password: Binding<String>) {
-    let url = URL(string: "http://localhost:9000/users/signin")!
-    var components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
-    components.queryItems = [
-        URLQueryItem(name: "email", value: email.wrappedValue),
-        URLQueryItem(name: "password", value: password.wrappedValue)
-    ]
-    
-    let query = components.url!.query
-    var request = URLRequest(url: url)
-    request.httpMethod = "POST"
-    request.httpBody = Data(query!.utf8)
-    let session = URLSession.shared
-    session.dataTask(with: request) { (data, response, error) in
-        if let data = data {
-            do {
-                var response1 = [:]
-                let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:Any]
-                response1 = json.unsafelyUnwrapped
-                //                print(response[AnyHashable("token")]!)
-                if (response1[AnyHashable("success")]! as! Int == 1) {
-                    if let httpResponse = response as? HTTPURLResponse {
-                        if let reauthCookie = httpResponse.allHeaderFields["Set-Cookie"] as? String {
-                            saveCookie(Cookie: reauthCookie, Token: response1[AnyHashable("token")]! as! String)
-                            
-                        }
-                    }
-                }
-            } catch {
-                print(error)
-            }
-        }
-    }.resume()
-}
-
-func saveCookie(Cookie: String, Token: String) {
-    let defaults = UserDefaults.standard
-    defaults.set(Cookie, forKey: DefaultsKeys.cookie)
-    defaults.set(Token, forKey: DefaultsKeys.token)
-}
-
-
