@@ -19,6 +19,8 @@ struct userArray:Codable {
 
 struct buttonView: View {
     private var parentVar: Binding<String>
+    @State private var email = "email"
+    @State private var password = "password"
     
     init(parentVar: Binding<String>) {
         self.parentVar = parentVar

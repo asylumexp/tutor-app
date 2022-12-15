@@ -8,13 +8,16 @@
 import SwiftUI
 struct buttonSchemes: View {
     @State private var temp = "signInView"
+    @State private var email = "signInView"
+    @State private var password = "signInView"
+
     var body: some View {
         ZStack {
             VStack {
                 Button(action: {
                     print("MyNewPrimitiveButton triggered. Is it printed ?")
                 }){ Text("bing chilling ").padding() }
-                    .buttonStyle(MyNewPrimitiveButtonStyle(color: .yellow, parentChange: self.$temp))
+                    .buttonStyle(MyLoginButton(color: .yellow, parentChange: self.$temp, email: $email, password: $password))
             }
         }
     }
@@ -50,7 +53,6 @@ struct MyNewPrimitiveButtonStyle: PrimitiveButtonStyle {
                     }
                     if pressing {
                         print("My long pressed starts")
-                        signIn()
                     } else {
                         print("My long pressed ends")
                         updateView(variable: parentVar)
@@ -61,6 +63,50 @@ struct MyNewPrimitiveButtonStyle: PrimitiveButtonStyle {
     }
 }
 
+struct MyLoginButton: PrimitiveButtonStyle {
+    var color: Color
+    var parentChange: Binding<String>
+    var email: Binding<String>
+    var password: Binding<String>
+    
+    func makeBody(configuration: PrimitiveButtonStyle.Configuration) -> some View {
+        MyButton(parentVar: parentChange, configuration: configuration, color: color, email: email, password: password)
+    }
+    
+    struct MyButton: View {
+        @State private var pressed = false
+        let parentVar: Binding<String>
+        let configuration: PrimitiveButtonStyle.Configuration
+        let color: Color
+        var email: Binding<String>
+        var password: Binding<String>
+        
+        var body: some View {
+            
+            return configuration.label
+                .foregroundColor(.white)
+                .padding(5)
+                .background(RoundedRectangle(cornerRadius: 5).fill(color))
+                .compositingGroup()
+                .shadow(color: .black, radius: 3)
+                .opacity(self.pressed ? 0.5 : 1.0)
+                .scaleEffect(self.pressed ? 0.8 : 1.0)
+                .onLongPressGesture(minimumDuration: 2.5, maximumDistance: .infinity, pressing: { pressing in
+                    withAnimation(.easeInOut(duration: 0.25)) {
+                        self.pressed = pressing
+                    }
+                    if pressing {
+                        print("My long pressed starts")
+                        signIn(email: email, password: password)
+                    } else {
+                        print("My long pressed ends")
+                        updateView(variable: parentVar)
+//                        POST(inputURL: "http://localhost:9000/users/signup")
+                    }
+                }, perform: { })
+        }
+    }
+}
 
 
 struct buttonSchemes_Previews: PreviewProvider {

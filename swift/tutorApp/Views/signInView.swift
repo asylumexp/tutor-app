@@ -9,7 +9,8 @@ import SwiftUI
 
 struct signInView: View {
     @State var parentVar: Binding<String>
-    @State var text = "asd"
+    @State var email = ""
+    @State var password = ""
     init(parentVar: Binding<String>) {
         self.parentVar = parentVar
     }
@@ -19,11 +20,11 @@ struct signInView: View {
             ZStack {
                 LinearGradient(gradient: Gradient(colors: [.init(hex: "071B33"), .init(hex: "833F46"), .init(hex: "FFB123")]), startPoint: .topTrailing, endPoint: .bottomLeading)
                     .ignoresSafeArea(edges: .all)
-                TextField("Placeholder", text: $text)
+                TextField("Email", text: $email)
                     .padding(.horizontal, 50.0)
                     .textFieldStyle(OutlinedTextFieldStyle(icon: Image(systemName: "pencil.line")))
                     .offset(y:-240)
-                SecureField("Placeholder", text: $text)
+                SecureField("Password", text: $password)
                     .padding(.horizontal, 50.0)
                     .textFieldStyle(OutlinedTextFieldStyle(icon: Image(systemName: "lock")))
                     .offset(y:-120)
@@ -31,7 +32,7 @@ struct signInView: View {
                     Button(action: {
                         print("MyNewPrimitiveButton triggered. Is it printed ?")
                     }){ Text("amazing app").padding() }
-                        .buttonStyle(MyNewPrimitiveButtonStyle(color: .yellow, parentChange: parentVar))
+                        .buttonStyle(MyLoginButton(color: .yellow, parentChange: parentVar, email: $email, password: $password))
                     
                 }
             }
