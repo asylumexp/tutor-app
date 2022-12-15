@@ -106,7 +106,6 @@ func signUp() {
 func signIn(email: Binding<String>, password: Binding<String>) {
     let url = URL(string: "http://localhost:9000/users/signin")!
     var components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
-    print(email.wrappedValue, password.wrappedValue)
     components.queryItems = [
         URLQueryItem(name: "email", value: email.wrappedValue),
         URLQueryItem(name: "password", value: password.wrappedValue)
@@ -118,16 +117,13 @@ func signIn(email: Binding<String>, password: Binding<String>) {
     request.httpBody = Data(query!.utf8)
     let session = URLSession.shared
     session.dataTask(with: request) { (data, response, error) in
-        print(response)
         if let data = data {
             do {
                 var response1 = [:]
                 let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:Any]
                 response1 = json.unsafelyUnwrapped
-                print(response1)
                 //                print(response[AnyHashable("token")]!)
                 if (response1[AnyHashable("success")]! as! Int == 1) {
-                    print(response1[AnyHashable("token")]!)
                     if let httpResponse = response as? HTTPURLResponse {
                         if let reauthCookie = httpResponse.allHeaderFields["Set-Cookie"] as? String {
                             saveCookie(Cookie: reauthCookie, Token: reauthCookie)
@@ -142,40 +138,10 @@ func signIn(email: Binding<String>, password: Binding<String>) {
     }.resume()
 }
 
-//func refresh() {
-//    let url = URL(string: "http://localhost:9000/users/refresh")!
-//
-//    let defaults = UserDefaults.standard
-//    var request = URLRequest(url: url)
-//    request.httpMethod = "POST"
-//    let cookieValue = defaults.string(forKey: DefaultsKeys.cookie)!
-//    request.addValue(cookieValue, forHTTPHeaderField: "Set-Cookie")
-//    print(request.allHTTPHeaderFields)
-//    let session = URLSession.shared
-//    session.dataTask(with: request) { (data, response, error) in
-//
-//        if let response = response {
-//            print(response)
-//        }
-//        if let data = data {
-//            do {
-//                var response = [:]
-//                let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:Any]
-//                response = json.unsafelyUnwrapped
-//                print(response)
-//            } catch {
-//                print(error)
-//            }
-//        }
-//    }.resume()
-//}
 func saveCookie(Cookie: String, Token: String) {
     let defaults = UserDefaults.standard
     defaults.set(Cookie, forKey: DefaultsKeys.cookie)
     defaults.set(Token, forKey: DefaultsKeys.token)
-    if let stringOne = defaults.string(forKey: DefaultsKeys.cookie) {
-        print(stringOne)
-    }
 }
 
 

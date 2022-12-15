@@ -24,6 +24,7 @@ struct signInView: View {
                     .padding(.horizontal, 50.0)
                     .textFieldStyle(OutlinedTextFieldStyle(icon: Image(systemName: "pencil.line")))
                     .offset(y:-240)
+                    .textInputAutocapitalization(.never)
                 SecureField("Password", text: $password)
                     .padding(.horizontal, 50.0)
                     .textFieldStyle(OutlinedTextFieldStyle(icon: Image(systemName: "lock")))
