@@ -18,22 +18,29 @@ struct signInView: View {
         HStack {
             
             ZStack {
+                // Creates gradient
                 LinearGradient(gradient: Gradient(colors: [.init(hex: "071B33"), .init(hex: "833F46"), .init(hex: "FFB123")]), startPoint: .topTrailing, endPoint: .bottomLeading)
                     .ignoresSafeArea(edges: .all)
+                // Email textfield
+                Image("Image")
+                    .offset(y:-280)
                 TextField("Email", text: $email)
                     .padding(.horizontal, 50.0)
                     .textFieldStyle(OutlinedTextFieldStyle(icon: Image(systemName: "pencil.line")))
-                    .offset(y:-240)
+                    .offset(y:-140)
                     .textInputAutocapitalization(.never)
+                // Password securefield
                 SecureField("Password", text: $password)
                     .padding(.horizontal, 50.0)
                     .textFieldStyle(OutlinedTextFieldStyle(icon: Image(systemName: "lock")))
-                    .offset(y:-120)
+                    .offset(y:-20)
+                // Button
                 VStack {
                     Button(action: {
                         print("MyNewPrimitiveButton triggered. Is it printed ?")
-                    }){ Text("amazing app").padding() }
-                        .buttonStyle(MyLoginButton(color: .yellow, parentChange: parentVar, email: $email, password: $password))
+                    }){ Text("Sign In").padding() }
+                        .buttonStyle(MyLoginButton(color: Color(hex: "040F16"), parentChange: parentVar, email: $email, password: $password))
+                        .offset(y:100)
                     
                 }
             }

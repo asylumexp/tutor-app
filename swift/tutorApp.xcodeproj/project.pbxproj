@@ -21,6 +21,19 @@
 		52E1F79F2946CD59009B6F2C /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E1F79E2946CD59009B6F2C /* extensions.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		529ADFAD294B0B2200D93BDF /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		520DC0A1293990900078E9E6 /* tutorApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tutorApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		520DC0A4293990900078E9E6 /* tutorAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tutorAppApp.swift; sourceTree = "<group>"; };
@@ -31,6 +44,8 @@
 		52233F8229461840005440A8 /* jsonFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = jsonFunctions.swift; sourceTree = "<group>"; };
 		5242346B2945BE6E0086AA3B /* menubarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menubarView.swift; sourceTree = "<group>"; };
 		529ADF8E294A0CC300D93BDF /* textBoxSchemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = textBoxSchemes.swift; sourceTree = "<group>"; };
+		529ADF96294B0B2000D93BDF /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		529ADF98294B0B2100D93BDF /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		52E1F7962946CC77009B6F2C /* viewFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewFunctions.swift; sourceTree = "<group>"; };
 		52E1F7982946CCDD009B6F2C /* buttonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = buttonView.swift; sourceTree = "<group>"; };
 		52E1F79A2946CCF3009B6F2C /* signInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signInView.swift; sourceTree = "<group>"; };
@@ -52,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				520DC0A3293990900078E9E6 /* tutorApp */,
+				529ADF95294B0B2000D93BDF /* Frameworks */,
 				520DC0A2293990900078E9E6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -84,6 +100,15 @@
 				520DC0AB293990910078E9E6 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		529ADF95294B0B2000D93BDF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				529ADF96294B0B2000D93BDF /* WidgetKit.framework */,
+				529ADF98294B0B2100D93BDF /* SwiftUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		52AD6C9D29475F4C0014AD50 /* Functions */ = {
@@ -125,6 +150,7 @@
 				520DC09D293990900078E9E6 /* Sources */,
 				520DC09E293990900078E9E6 /* Frameworks */,
 				520DC09F293990900078E9E6 /* Resources */,
+				529ADFAD294B0B2200D93BDF /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
