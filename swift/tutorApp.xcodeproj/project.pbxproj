@@ -15,6 +15,7 @@
 		52233F8329461840005440A8 /* jsonFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52233F8229461840005440A8 /* jsonFunctions.swift */; };
 		5242346C2945BE6E0086AA3B /* menubarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5242346B2945BE6E0086AA3B /* menubarView.swift */; };
 		529ADF8F294A0CC300D93BDF /* textBoxSchemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529ADF8E294A0CC300D93BDF /* textBoxSchemes.swift */; };
+		529ADFB1294B214900D93BDF /* signUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529ADFB0294B214900D93BDF /* signUpView.swift */; };
 		52E1F7972946CC77009B6F2C /* viewFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E1F7962946CC77009B6F2C /* viewFunctions.swift */; };
 		52E1F7992946CCDD009B6F2C /* buttonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E1F7982946CCDD009B6F2C /* buttonView.swift */; };
 		52E1F79B2946CCF3009B6F2C /* signInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E1F79A2946CCF3009B6F2C /* signInView.swift */; };
@@ -46,6 +47,7 @@
 		529ADF8E294A0CC300D93BDF /* textBoxSchemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = textBoxSchemes.swift; sourceTree = "<group>"; };
 		529ADF96294B0B2000D93BDF /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		529ADF98294B0B2100D93BDF /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		529ADFB0294B214900D93BDF /* signUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signUpView.swift; sourceTree = "<group>"; };
 		52E1F7962946CC77009B6F2C /* viewFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewFunctions.swift; sourceTree = "<group>"; };
 		52E1F7982946CCDD009B6F2C /* buttonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = buttonView.swift; sourceTree = "<group>"; };
 		52E1F79A2946CCF3009B6F2C /* signInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signInView.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				52E1F7982946CCDD009B6F2C /* buttonView.swift */,
 				52E1F79A2946CCF3009B6F2C /* signInView.swift */,
 				5242346B2945BE6E0086AA3B /* menubarView.swift */,
+				529ADFB0294B214900D93BDF /* signUpView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 				52E1F7972946CC77009B6F2C /* viewFunctions.swift in Sources */,
 				52E1F79B2946CCF3009B6F2C /* signInView.swift in Sources */,
 				520DC0A5293990900078E9E6 /* tutorAppApp.swift in Sources */,
+				529ADFB1294B214900D93BDF /* signUpView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

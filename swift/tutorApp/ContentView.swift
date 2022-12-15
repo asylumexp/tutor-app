@@ -15,6 +15,8 @@ struct ContentView: View {
             signInView(parentVar: $temp)
         } else if (temp == "buttonView") {
             buttonView(parentVar: $temp)
+        } else if (temp == "signUpView") {
+            signUpView(parentVar: $temp)
         }
     }
 }

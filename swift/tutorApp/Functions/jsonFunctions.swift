@@ -68,14 +68,14 @@ func FETCH(inputURL: String, Parse: Bool){
     
 }
 
-func signUp() {
+func signUp(name: Binding<String>, email: Binding<String>, password: Binding<String>, parentVar: Binding<String>) {
     let url = URL(string: "http://localhost:9000/users/signup")!
     var components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
     
     components.queryItems = [
-        URLQueryItem(name: "name", value: "name"),
-        URLQueryItem(name: "email", value: "email"),
-        URLQueryItem(name: "password", value: "password")
+        URLQueryItem(name: "name", value: name.wrappedValue),
+        URLQueryItem(name: "email", value: email.wrappedValue),
+        URLQueryItem(name: "password", value: password.wrappedValue)
     ]
     
     let query = components.url!.query
@@ -84,17 +84,19 @@ func signUp() {
     request.httpBody = Data(query!.utf8)
     let session = URLSession.shared
     session.dataTask(with: request) { (data, response, error) in
-        
-        if let response = response {
-            print(response)
-        }
         if let data = data {
             do {
-                var response = [:]
+                var response1 = [:]
                 let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:Any]
-                response = json.unsafelyUnwrapped
-                print(response[AnyHashable("success")]!)
-                print(response[AnyHashable("token")]!)
+                response1 = json.unsafelyUnwrapped
+                if (response1[AnyHashable("success")]! as! Int == 1) {
+                    if let httpResponse = response as? HTTPURLResponse {
+                        if let reauthCookie = httpResponse.allHeaderFields["Set-Cookie"] as? String {
+                            saveCookie(Cookie: reauthCookie, Token: response1[AnyHashable("token")]! as! String)
+                            updateView(variable: parentVar)
+                        }
+                    }
+                }
             } catch {
                 print(error)
             }
@@ -126,7 +128,7 @@ func signIn(email: Binding<String>, password: Binding<String>) {
                 if (response1[AnyHashable("success")]! as! Int == 1) {
                     if let httpResponse = response as? HTTPURLResponse {
                         if let reauthCookie = httpResponse.allHeaderFields["Set-Cookie"] as? String {
-                            saveCookie(Cookie: reauthCookie, Token: reauthCookie)
+                            saveCookie(Cookie: reauthCookie, Token: response1[AnyHashable("token")]! as! String)
                             
                         }
                     }
