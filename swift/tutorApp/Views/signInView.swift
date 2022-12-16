@@ -32,6 +32,7 @@ struct signInView: View {
                     .textFieldStyle(OutlinedTextFieldStyle(icon: Image(systemName: "pencil.line")))
                     .offset(y:-140)
                     .textInputAutocapitalization(.never)
+                    .autocorrectionDisabled()
                 // Password securefield
                 SecureField("Password", text: $password)
                     .padding(.horizontal, 50.0)

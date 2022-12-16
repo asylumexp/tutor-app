@@ -118,6 +118,17 @@ func signInUpPOST(component: URLComponents, parentVar: Binding<String>, url: URL
                             updateView(variable: parentVar)
                         }
                     }
+                } else if (response1[AnyHashable("success")]! as! Int == 0){
+                    switch response1[AnyHashable("error")]! as! String {
+                    case "User does not exist":
+                        print("user does not exist")
+                    case "Send needed Params":
+                        print("All fields need input")
+                    case "Wrong password":
+                        print("Incorrect password")
+                    default:
+                        print(response1[AnyHashable("error")]!)
+                    }
                 }
             } catch {
                 print(error)
