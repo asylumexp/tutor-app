@@ -23,8 +23,10 @@ struct signUpView: View {
                 LinearGradient(gradient: Gradient(colors: [.init(hex: "071B33"), .init(hex: "833F46"), .init(hex: "FFB123")]), startPoint: .topTrailing, endPoint: .bottomLeading)
                     .ignoresSafeArea(edges: .all)
                 // Email textfield
-                Image("Image")
+                Image(systemName: "person.2.gobackward")
                     .offset(y:-280)
+                    .font(.system(size: 60))
+                    .colorInvert()
                 TextField("Name", text: $name)
                     .padding(.horizontal, 50.0)
                     .textFieldStyle(OutlinedTextFieldStyle(icon: Image(systemName: "person.fill")))
