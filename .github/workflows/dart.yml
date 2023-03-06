@@ -7,10 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
+    - run: cd ./flutter
     - uses: subosito/flutter-action@v1
       with:
           channel: 'dev'
-    - run: cd ./flutter
     - run: flutter pub get
     - run: flutter config --enable-web
     - run: flutter build web
@@ -27,10 +27,10 @@ jobs:
     - uses: actions/setup-java@v1
       with:
         java-version: '12.x'
+    - run: cd ./flutter
     - uses: subosito/flutter-action@v1
       with:
           channel: 'dev'
-    - run: cd ./flutter
     - run: flutter pub get
     - run: flutter clean
     - run: flutter build ios --release --no-codesign
@@ -47,10 +47,10 @@ jobs:
     - uses: actions/setup-java@v1
       with:
         java-version: '12.x'
+    - run: cd ./flutter
     - uses: subosito/flutter-action@v1
       with:
           channel: 'dev'
-    - run: cd ./flutter
     - run: flutter pub get
 #     - run: flutter build apk --target-platform android-arm,android-arm64 --split-per-abi
 #     - run: flutter build appbundle --target-platform android-arm,android-arm64
