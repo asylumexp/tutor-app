@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - run: cd ./flutter
+    - run: ls
     - uses: subosito/flutter-action@v1
       with:
           channel: 'dev'
@@ -27,7 +27,7 @@ jobs:
     - uses: actions/setup-java@v1
       with:
         java-version: '12.x'
-    - run: cd ./flutter
+    - run: ls
     - uses: subosito/flutter-action@v1
       with:
           channel: 'dev'
