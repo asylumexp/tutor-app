@@ -20,7 +20,7 @@ jobs:
       uses: actions/upload-artifact@master
       with:
         name: web-build
-        path: build/web
+        path: flutter/build/web
   build_ios:
     defaults:
       run:
@@ -42,7 +42,7 @@ jobs:
       uses: actions/upload-artifact@master
       with:
         name: ios-build
-        path: build/ios/iphoneos
+        path: flutter/build/ios/iphoneos
   build_apk:
     defaults:
       run:
@@ -65,4 +65,4 @@ jobs:
       uses: actions/upload-artifact@master
       with:
         name: apk-build
-        path: build/app/outputs/apk/release
+        path: flutter/build/app/outputs/apk/release
