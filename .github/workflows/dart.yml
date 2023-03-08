@@ -38,7 +38,7 @@ jobs:
         channel: 'stable'
     - run: flutter pub get
     - run: flutter clean
-    - run: flutter build ipa --release --obfuscate --split-debug-info build/ios/outputs/symbol
+    - run: flutter build ios --release --no-codesign
     - name: Upload iPA
       uses: actions/upload-artifact@master
       with:
