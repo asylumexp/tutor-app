@@ -11,6 +11,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home Page'),
+        automaticallyImplyLeading: false,
       ),
       body: Center(
         child: Container(
@@ -20,7 +21,7 @@ class _HomePageState extends State<HomePage> {
               color: Colors.blue, borderRadius: BorderRadius.circular(10)),
           child: TextButton(
             onPressed: () {
-              Navigator.pop(context);
+              print("test");
             },
             child: const Text(
               'Welcome',
