@@ -26,11 +26,14 @@ class LoginDemo extends StatefulWidget {
 }
 
 void requestLogin() async {
-  await http.get(Uri.parse("http://localhost:9000/users")).then((response) {
-    var ddd = jsonDecode(response.body);
-
-    print(ddd);
-  });
+  try {
+    await http.get(Uri.parse("http://localhost:9000/users")).then((response) {
+      // ignore: avoid_print
+      print(jsonDecode(response.body));
+    });
+  } catch (e) {
+    log("exception at requestLogin");
+  }
 }
 
 // Define a custom Form widget.
