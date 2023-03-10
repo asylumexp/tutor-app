@@ -1,7 +1,8 @@
 import 'dart:developer';
-
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'HomePage.dart';
+import 'dart:convert';
 
 void main() {
   runApp(const MyApp());
@@ -24,8 +25,12 @@ class LoginDemo extends StatefulWidget {
   _LoginDemoState createState() => _LoginDemoState();
 }
 
-void requestLogin(String email, String password) {
-  log("Email: $email password: $password");
+void requestLogin() async {
+  await http.get(Uri.parse("http://localhost:9000/users")).then((response) {
+    var ddd = jsonDecode(response.body);
+
+    print(ddd);
+  });
 }
 
 // Define a custom Form widget.
@@ -104,7 +109,7 @@ class _LoginDemoState extends State<LoginDemo> {
                   color: Colors.blue, borderRadius: BorderRadius.circular(20)),
               child: TextButton(
                 onPressed: () {
-                  requestLogin(emailController.text, passwordController.text);
+                  requestLogin();
                   Navigator.push(
                       context, MaterialPageRoute(builder: (_) => HomePage()));
                 },
