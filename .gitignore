@@ -1,6 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
 /client/node_modules
 /server/node_modules
+
  # dart
 .dart_tool/
 .packages

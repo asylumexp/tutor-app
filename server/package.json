@@ -21,6 +21,7 @@
     "path": "^0.12.7"
   },
   "devDependencies": {
-    "@types/bcrypt-nodejs": "^0.0.31"
+    "@types/bcrypt-nodejs": "^0.0.31",
+    "multer": "^1.4.5-lts.1"
   }
 }
