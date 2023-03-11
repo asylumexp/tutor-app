@@ -51,6 +51,6 @@ app.use("/api/posts", postRoute);
 app.get("/", (req, res) => {
     res.send("Welcome to homepage")
 })
-app.listen(process.env.PORT || 8800, () => {
+app.listen(process.env.PORT || 9000, () => {
     console.log("Backend Server initiated")
 })

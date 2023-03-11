@@ -25,26 +25,32 @@ class LoginDemo extends StatefulWidget {
   _LoginDemoState createState() => _LoginDemoState();
 }
 
-void requestLogin() async {
+Future<http.Response> requestLogin(String user, String pass) {
   try {
-    await http.get(Uri.parse("http://localhost:9000/users")).then((response) {
-      // ignore: avoid_print
-      print(jsonDecode(response.body));
-    });
+    return http.post(
+      Uri.parse('http://localhost:9000/api/auth/register'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(<String, String>{'email': user, 'password': pass}),
+    );
   } catch (e) {
-    log("exception at requestLogin");
+    log("exception at signIn");
+    rethrow;
   }
 }
 
 // Define a custom Form widget.
 
 class _LoginDemoState extends State<LoginDemo> {
+  final userController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
   @override
   void dispose() {
     // Clean up the controller when the widget is disposed.
+    userController.dispose();
     emailController.dispose();
     passwordController.dispose();
     super.dispose();
@@ -72,6 +78,18 @@ class _LoginDemoState extends State<LoginDemo> {
                     child: Image.network(
                         'https://fastly.picsum.photos/id/9/250/250.jpg?hmac=tqDH5wEWHDN76mBIWEPzg1in6egMl49qZeguSaH9_VI')),
               ),
+            ),
+            Padding(
+              //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
+              padding: EdgeInsets.symmetric(
+                  horizontal: MediaQuery.of(context).size.width * 0.2,
+                  vertical: 20),
+              child: TextField(
+                  decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Username',
+                      hintText: 'Enter valid username'),
+                  controller: userController),
             ),
             Padding(
               //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
@@ -114,7 +132,8 @@ class _LoginDemoState extends State<LoginDemo> {
                   color: Colors.blue, borderRadius: BorderRadius.circular(20)),
               child: TextButton(
                 onPressed: () {
-                  requestLogin();
+                  requestLogin(emailController.text, passwordController.text)
+                      .then((request) => print(request.body));
                   Navigator.push(
                       context, MaterialPageRoute(builder: (_) => HomePage()));
                 },
@@ -125,7 +144,7 @@ class _LoginDemoState extends State<LoginDemo> {
               ),
             ),
             const SizedBox(
-              height: 130,
+              height: 20,
             ),
             const Text('New User? Create Account')
           ],
