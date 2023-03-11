@@ -49,5 +49,5 @@ void addStringToSF(String key, String value) async {
 
 getValue(String key) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  return prefs.get(key);
+  print(prefs.get(key));
 }
