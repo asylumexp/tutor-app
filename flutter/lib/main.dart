@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tutor_app/login_page.dart';
 import 'register_page.dart';
 
 void main() {
@@ -55,6 +56,27 @@ class _LoginDemoState extends State<LoginDemo> {
                 ),
               ),
             ),
+            Padding(
+                //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
+                padding: EdgeInsets.symmetric(
+                    horizontal: MediaQuery.of(context).size.width * 0.2,
+                    vertical: 20)),
+            Container(
+              height: 50,
+              width: 250,
+              decoration: BoxDecoration(
+                  color: Colors.blue, borderRadius: BorderRadius.circular(20)),
+              child: TextButton(
+                onPressed: () {
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (_) => loginPage()));
+                },
+                child: const Text(
+                  'go to logogogin',
+                  style: TextStyle(color: Colors.white, fontSize: 25),
+                ),
+              ),
+            )
           ],
         ),
       ),
