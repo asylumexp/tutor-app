@@ -4,7 +4,8 @@ const bcrypt = require("bcryptjs");
 
 //update user
 router.put("/:id", async (req, res) => {
-  if (req.body.userId === req.params.id || req.body.isAdmin) {
+  // removed || req.body.isAdmin from the below if statement because it seemed useless because anyone can say they are an admin
+  if (req.body.userId === req.params.id) {
     if (req.body.password) {
       try {
         const salt = await bcrypt.genSalt(10);
@@ -13,9 +14,15 @@ router.put("/:id", async (req, res) => {
         return res.status(500).json(err);
       }
     }
+    // detect if the body contains an isAdmin assertion, and if it does it is removed from what is changed in the database
+    let newbody = req.body;
+    if (typeof req.body.isAdmin !== "undefined") {
+      delete newbody.isAdmin;
+    }
+
     try {
       const user = await User.findByIdAndUpdate(req.params.id, {
-        $set: req.body,
+        $set: newbody,
       });
       res.status(200).json("Account has been updated");
     } catch (err) {
