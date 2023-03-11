@@ -84,7 +84,7 @@ class _loginPage extends State<loginPage> {
               child: TextButton(
                 onPressed: () {
                   requestLogin(emailController.text, passwordController.text)
-                      .then((request) => print(request.body));
+                      .then((request) => parseLogin(request));
                 },
                 child: const Text(
                   'Login',
