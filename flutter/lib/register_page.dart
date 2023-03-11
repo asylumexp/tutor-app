@@ -23,97 +23,289 @@ class _RegisterPage extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: const Text('registsigser'),
-        automaticallyImplyLeading: false,
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(top: 60.0),
-              child: Center(
-                child: Container(
-                    width: 200,
-                    height: 150,
-                    /*decoration: BoxDecoration(
-                        color: Colors.red,
-                        borderRadius: BorderRadius.circular(50.0)),*/
-                    child: Image.network(
-                        'https://fastly.picsum.photos/id/9/250/250.jpg?hmac=tqDH5wEWHDN76mBIWEPzg1in6egMl49qZeguSaH9_VI')),
-              ),
-            ),
-            Padding(
-              //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
-              padding: EdgeInsets.symmetric(
-                  horizontal: MediaQuery.of(context).size.width * 0.2,
-                  vertical: 20),
-              child: TextField(
-                  decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Username',
-                      hintText: 'Enter valid username'),
-                  controller: userController),
-            ),
-            Padding(
-              //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
-              padding: EdgeInsets.symmetric(
-                  horizontal: MediaQuery.of(context).size.width * 0.2,
-                  vertical: 20),
-              child: TextField(
-                  decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Email',
-                      hintText: 'Enter valid email id as abc@gmail.com'),
-                  controller: emailController),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: MediaQuery.of(context).size.width * 0.2,
-                  vertical: 20),
-              //padding: EdgeInsets.symmetric(horizontal: 15),
-              child: TextField(
-                  obscureText: true,
-                  decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Password',
-                      hintText: 'Enter secure password'),
-                  controller: passwordController),
-            ),
-            TextButton(
-              onPressed: () {
-                //TODO FORGOT PASSWORD SCREEN GOES HERE
-              },
-              child: const Text(
-                'Forgot Password',
-                style: TextStyle(color: Colors.blue, fontSize: 15),
-              ),
-            ),
-            Container(
-              height: 50,
-              width: 250,
-              decoration: BoxDecoration(
-                  color: Colors.blue, borderRadius: BorderRadius.circular(20)),
-              child: TextButton(
-                onPressed: () {
-                  requestRegister(userController.text, emailController.text,
-                          passwordController.text)
-                      .then((request) => print(request.body));
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (_) => RegisterPage()));
-                },
-                child: const Text(
-                  'Login',
-                  style: TextStyle(color: Colors.white, fontSize: 25),
+      backgroundColor: Color(0xffffffff),
+      body: Align(
+        alignment: Alignment.center,
+        child: Padding(
+          padding: EdgeInsets.symmetric(vertical: 0, horizontal: 16),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                ///***If you have exported images you must have to copy those images in assets/images directory.
+                Image(
+                  image: NetworkImage(
+                      "https://cdn3.iconfinder.com/data/icons/network-and-communications-6/130/291-128.png"),
+                  height: 90,
+                  width: 90,
+                  fit: BoxFit.cover,
                 ),
-              ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(0, 8, 0, 30),
+                  child: Text(
+                    "ToDo",
+                    textAlign: TextAlign.start,
+                    overflow: TextOverflow.clip,
+                    style: TextStyle(
+                      fontWeight: FontWeight.w700,
+                      fontStyle: FontStyle.normal,
+                      fontSize: 20,
+                      color: Color(0xff3a57e8),
+                    ),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "Sign Up",
+                    textAlign: TextAlign.start,
+                    overflow: TextOverflow.clip,
+                    style: TextStyle(
+                      fontWeight: FontWeight.w700,
+                      fontStyle: FontStyle.normal,
+                      fontSize: 24,
+                      color: Color(0xff000000),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(0, 16, 0, 0),
+                  child: TextField(
+                    controller: TextEditingController(text: "John"),
+                    obscureText: false,
+                    textAlign: TextAlign.start,
+                    maxLines: 1,
+                    style: TextStyle(
+                      fontWeight: FontWeight.w400,
+                      fontStyle: FontStyle.normal,
+                      fontSize: 16,
+                      color: Color(0xff000000),
+                    ),
+                    decoration: InputDecoration(
+                      disabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(4.0),
+                        borderSide:
+                            BorderSide(color: Color(0xff9e9e9e), width: 1),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(4.0),
+                        borderSide:
+                            BorderSide(color: Color(0xff9e9e9e), width: 1),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(4.0),
+                        borderSide:
+                            BorderSide(color: Color(0xff9e9e9e), width: 1),
+                      ),
+                      labelText: "Username",
+                      labelStyle: TextStyle(
+                        fontWeight: FontWeight.w400,
+                        fontStyle: FontStyle.normal,
+                        fontSize: 16,
+                        color: Color(0xff9e9e9e),
+                      ),
+                      filled: true,
+                      fillColor: Color(0x00ffffff),
+                      isDense: false,
+                      contentPadding:
+                          EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(0, 16, 0, 0),
+                  child: TextField(
+                    controller: TextEditingController(text: "john@test.com"),
+                    obscureText: false,
+                    textAlign: TextAlign.start,
+                    maxLines: 1,
+                    style: TextStyle(
+                      fontWeight: FontWeight.w400,
+                      fontStyle: FontStyle.normal,
+                      fontSize: 16,
+                      color: Color(0xff000000),
+                    ),
+                    decoration: InputDecoration(
+                      disabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(4.0),
+                        borderSide:
+                            BorderSide(color: Color(0xff9e9e9e), width: 1),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(4.0),
+                        borderSide:
+                            BorderSide(color: Color(0xff9e9e9e), width: 1),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(4.0),
+                        borderSide:
+                            BorderSide(color: Color(0xff9e9e9e), width: 1),
+                      ),
+                      labelText: "Email",
+                      labelStyle: TextStyle(
+                        fontWeight: FontWeight.w400,
+                        fontStyle: FontStyle.normal,
+                        fontSize: 16,
+                        color: Color(0xff9e9e9e),
+                      ),
+                      filled: true,
+                      fillColor: Color(0x00ffffff),
+                      isDense: false,
+                      contentPadding:
+                          EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(0, 16, 0, 0),
+                  child: TextField(
+                    controller: TextEditingController(text: "12345678"),
+                    obscureText: true,
+                    textAlign: TextAlign.start,
+                    maxLines: 1,
+                    style: TextStyle(
+                      fontWeight: FontWeight.w400,
+                      fontStyle: FontStyle.normal,
+                      fontSize: 16,
+                      color: Color(0xff000000),
+                    ),
+                    decoration: InputDecoration(
+                      disabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(4.0),
+                        borderSide:
+                            BorderSide(color: Color(0xff9e9e9e), width: 1),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(4.0),
+                        borderSide:
+                            BorderSide(color: Color(0xff9e9e9e), width: 1),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(4.0),
+                        borderSide:
+                            BorderSide(color: Color(0xff9e9e9e), width: 1),
+                      ),
+                      labelText: "Password",
+                      labelStyle: TextStyle(
+                        fontWeight: FontWeight.w400,
+                        fontStyle: FontStyle.normal,
+                        fontSize: 16,
+                        color: Color(0xff9e9e9e),
+                      ),
+                      filled: true,
+                      fillColor: Color(0x00ffffff),
+                      isDense: false,
+                      contentPadding:
+                          EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(0, 16, 0, 30),
+                  child: TextField(
+                    controller: TextEditingController(text: "12345678"),
+                    obscureText: true,
+                    textAlign: TextAlign.start,
+                    maxLines: 1,
+                    style: TextStyle(
+                      fontWeight: FontWeight.w400,
+                      fontStyle: FontStyle.normal,
+                      fontSize: 16,
+                      color: Color(0xff000000),
+                    ),
+                    decoration: InputDecoration(
+                      disabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(4.0),
+                        borderSide:
+                            BorderSide(color: Color(0xff9e9e9e), width: 1),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(4.0),
+                        borderSide:
+                            BorderSide(color: Color(0xff9e9e9e), width: 1),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(4.0),
+                        borderSide:
+                            BorderSide(color: Color(0xff9e9e9e), width: 1),
+                      ),
+                      labelText: "Confirm Password",
+                      labelStyle: TextStyle(
+                        fontWeight: FontWeight.w400,
+                        fontStyle: FontStyle.normal,
+                        fontSize: 16,
+                        color: Color(0xff9e9e9e),
+                      ),
+                      filled: true,
+                      fillColor: Color(0x00ffffff),
+                      isDense: false,
+                      contentPadding:
+                          EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+                    ),
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Expanded(
+                      flex: 1,
+                      child: MaterialButton(
+                        onPressed: () {},
+                        color: Color(0xff3a57e8),
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12.0),
+                        ),
+                        padding: EdgeInsets.all(16),
+                        child: Text(
+                          "Sign Up",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                            fontStyle: FontStyle.normal,
+                          ),
+                        ),
+                        textColor: Color(0xffffffff),
+                        height: 40,
+                        minWidth: 140,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 16,
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: MaterialButton(
+                        onPressed: () {},
+                        color: Color(0xffffffff),
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12.0),
+                          side: BorderSide(color: Color(0xff9e9e9e), width: 1),
+                        ),
+                        padding: EdgeInsets.all(16),
+                        child: Text(
+                          "Login",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                            fontStyle: FontStyle.normal,
+                          ),
+                        ),
+                        textColor: Color(0xff000000),
+                        height: 40,
+                        minWidth: 140,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ),
-            const SizedBox(
-              height: 20,
-            ),
-            const Text('New User? Create Account')
-          ],
+          ),
         ),
       ),
     );
