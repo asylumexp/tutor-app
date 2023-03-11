@@ -25,14 +25,15 @@ class LoginDemo extends StatefulWidget {
   _LoginDemoState createState() => _LoginDemoState();
 }
 
-Future<http.Response> requestLogin(String user, String pass) {
+Future<http.Response> requestLogin(String user, String email, String pass) {
   try {
     return http.post(
       Uri.parse('http://localhost:9000/api/auth/register'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
-      body: jsonEncode(<String, String>{'email': user, 'password': pass}),
+      body: jsonEncode(
+          <String, String>{'username': user, 'email': email, 'password': pass}),
     );
   } catch (e) {
     log("exception at signIn");
@@ -132,10 +133,11 @@ class _LoginDemoState extends State<LoginDemo> {
                   color: Colors.blue, borderRadius: BorderRadius.circular(20)),
               child: TextButton(
                 onPressed: () {
-                  requestLogin(emailController.text, passwordController.text)
+                  requestLogin(userController.text, emailController.text,
+                          passwordController.text)
                       .then((request) => print(request.body));
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => HomePage()));
+                  // Navigator.push(
+                  //     context, MaterialPageRoute(builder: (_) => HomePage()));
                 },
                 child: const Text(
                   'Login',
