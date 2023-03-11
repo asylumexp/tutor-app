@@ -3,7 +3,7 @@ const router = require("express").Router();
 const bcrypt = require("bcryptjs");
 
 
-//update user 
+//update user
 router.put("/:id", async (req, res) => {
     if (req.body.userId === req.params.id || req.body.isAdmin) {
         if (req.body.password) {
