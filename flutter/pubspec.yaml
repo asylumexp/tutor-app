@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   http: ^0.13.5
   shared_preferences: ^2.0.18
+  json_theme: ^5.0.0+5
 
 dev_dependencies:
   flutter_test:
@@ -54,6 +55,10 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+  assets:
+    - assets/appainter_theme_dark.json
+    - assets/appainter_theme_light.json
+
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

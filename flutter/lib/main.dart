@@ -1,18 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:tutor_app/login_page.dart';
 import 'register_page.dart';
+import 'package:json_theme/json_theme.dart';
+import 'package:flutter/services.dart'; // For rootBundle
+import 'dart:convert';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final themeStrDark =
+      await rootBundle.loadString('assets/appainter_theme_dark.json');
+  final themeJsonDark = jsonDecode(themeStrDark);
+  final themeDark = ThemeDecoder.decodeThemeData(themeJsonDark)!;
+
+  final themeStrLight =
+      await rootBundle.loadString('assets/appainter_theme_light.json');
+  final themeJsonLight = jsonDecode(themeStrLight);
+  final themeLight = ThemeDecoder.decodeThemeData(themeJsonLight)!;
+
+  runApp(MyApp(theme_light: themeLight, theme_dark: themeDark));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final ThemeData theme_dark;
+  final ThemeData theme_light;
+
+  const MyApp({Key? key, required this.theme_dark, required this.theme_light})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: theme_light,
+      darkTheme: theme_dark,
+      themeMode: ThemeMode.system,
       home: LoginDemo(),
     );
   }
@@ -29,7 +51,6 @@ class _LoginDemoState extends State<LoginDemo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text("Login Page"),
       ),

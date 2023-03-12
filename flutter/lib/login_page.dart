@@ -22,7 +22,7 @@ class _loginPage extends State<loginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffffffff),
+      // backgroundColor: const Color(0xffffffff),
       body: Align(
         alignment: Alignment.center,
         child: Padding(
@@ -51,7 +51,7 @@ class _loginPage extends State<loginPage> {
                       fontWeight: FontWeight.w700,
                       fontStyle: FontStyle.normal,
                       fontSize: 20,
-                      color: Color(0xff3a57e8),
+                      color: Color.fromARGB(255, 128, 149, 253),
                     ),
                   ),
                 ),
@@ -65,7 +65,7 @@ class _loginPage extends State<loginPage> {
                       fontWeight: FontWeight.w700,
                       fontStyle: FontStyle.normal,
                       fontSize: 24,
-                      color: Color(0xff000000),
+                      // color: Color(0xff000000),
                     ),
                   ),
                 ),
@@ -81,7 +81,7 @@ class _loginPage extends State<loginPage> {
                       fontWeight: FontWeight.w400,
                       fontStyle: FontStyle.normal,
                       fontSize: 16,
-                      color: Color(0xff000000),
+                      // color: Color(0xff000000),
                     ),
                     decoration: InputDecoration(
                       disabledBorder: OutlineInputBorder(
@@ -104,7 +104,7 @@ class _loginPage extends State<loginPage> {
                         fontWeight: FontWeight.w400,
                         fontStyle: FontStyle.normal,
                         fontSize: 16,
-                        color: Color(0xff9e9e9e),
+                        // color: Color(0xff9e9e9e),
                       ),
                       filled: true,
                       fillColor: const Color(0x00f2f2f3),
@@ -123,7 +123,7 @@ class _loginPage extends State<loginPage> {
                     fontWeight: FontWeight.w400,
                     fontStyle: FontStyle.normal,
                     fontSize: 16,
-                    color: Color(0xff000000),
+                    // color: Color(0xff000000),
                   ),
                   decoration: InputDecoration(
                     disabledBorder: OutlineInputBorder(
@@ -146,7 +146,7 @@ class _loginPage extends State<loginPage> {
                       fontWeight: FontWeight.w400,
                       fontStyle: FontStyle.normal,
                       fontSize: 16,
-                      color: Color(0xff9e9e9e),
+                      // color: Color(0xff9e9e9e),
                     ),
                     filled: true,
                     fillColor: const Color(0x00f2f2f3),
@@ -188,7 +188,7 @@ class _loginPage extends State<loginPage> {
                                 MaterialPageRoute(
                                     builder: (_) => RegisterPage()));
                           },
-                          color: const Color(0xffffffff),
+                          color: Color.fromARGB(255, 212, 212, 212),
                           elevation: 0,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12.0),
@@ -220,13 +220,14 @@ class _loginPage extends State<loginPage> {
                                     passwordController.text)
                                 .then((request) => parseLogin(request));
                           },
-                          color: const Color(0xff3a57e8),
+                          color: Color.fromARGB(255, 212, 212, 212),
                           elevation: 0,
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12.0),
-                          ),
+                              borderRadius: BorderRadius.circular(12.0),
+                              side: const BorderSide(
+                                  color: Color(0xff9e9e9e), width: 1)),
                           padding: const EdgeInsets.all(16),
-                          textColor: const Color(0xffffffff),
+                          textColor: Color.fromARGB(255, 0, 0, 0),
                           height: 40,
                           minWidth: 140,
                           child: const Text(
@@ -252,7 +253,7 @@ class _loginPage extends State<loginPage> {
                       fontWeight: FontWeight.w400,
                       fontStyle: FontStyle.normal,
                       fontSize: 14,
-                      color: Color(0xff9e9e9e),
+                      color: Color.fromARGB(255, 110, 110, 110),
                     ),
                   ),
                 ),
