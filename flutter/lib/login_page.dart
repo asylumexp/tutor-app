@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'loginFunctions.dart';
 import 'register_page.dart';
 
@@ -34,12 +35,15 @@ class _loginPage extends State<loginPage> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 ///***If you have exported images you must have to copy those images in assets/images directory.
-                const Image(
-                  image: NetworkImage(
-                      "https://cdn3.iconfinder.com/data/icons/network-and-communications-6/130/291-128.png"),
-                  height: 90,
-                  width: 90,
-                  fit: BoxFit.cover,
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(50.0),
+                  //make border radius more than 50% of square height & width
+                  child: Image.asset(
+                    "assets/icon.png",
+                    height: 90.0,
+                    width: 90.0,
+                    fit: BoxFit.cover, //change image fill type
+                  ),
                 ),
                 const Padding(
                   padding: EdgeInsets.fromLTRB(0, 8, 0, 30),
@@ -243,59 +247,12 @@ class _loginPage extends State<loginPage> {
                     ],
                   ),
                 ),
-                const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 16, horizontal: 0),
-                  child: Text(
-                    "Or Continue with",
-                    textAlign: TextAlign.start,
-                    overflow: TextOverflow.clip,
-                    style: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      fontStyle: FontStyle.normal,
-                      fontSize: 14,
-                      color: Color.fromARGB(255, 110, 110, 110),
-                    ),
-                  ),
-                ),
-                Container(
-                  margin: const EdgeInsets.all(0),
+                Padding(
                   padding:
-                      const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                  decoration: BoxDecoration(
-                    color: const Color(0xffffffff),
-                    shape: BoxShape.rectangle,
-                    borderRadius: BorderRadius.circular(12.0),
-                    border:
-                        Border.all(color: const Color(0xff9e9e9e), width: 1),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.min,
-                    children: const [
-                      ///***If you have exported images you must have to copy those images in assets/images directory.
-                      Image(
-                        image: NetworkImage(
-                            "https://cdn3.iconfinder.com/data/icons/logos-brands-3/24/logo_brand_brands_logos_google-256.png"),
-                        height: 25,
-                        width: 25,
-                        fit: BoxFit.cover,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(16, 0, 0, 0),
-                        child: Text(
-                          "Google",
-                          textAlign: TextAlign.start,
-                          overflow: TextOverflow.clip,
-                          style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontStyle: FontStyle.normal,
-                            fontSize: 16,
-                            color: Color(0xff000000),
-                          ),
-                        ),
-                      ),
-                    ],
+                      const EdgeInsets.symmetric(vertical: 16, horizontal: 0),
+                  child: SignInButton(
+                    Buttons.Google,
+                    onPressed: () {},
                   ),
                 ),
               ],

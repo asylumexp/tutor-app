@@ -38,6 +38,7 @@ dependencies:
   http: ^0.13.5
   shared_preferences: ^2.0.18
   json_theme: ^5.0.0+5
+  flutter_signin_button: ^2.0.0
 
 dev_dependencies:
   flutter_test:

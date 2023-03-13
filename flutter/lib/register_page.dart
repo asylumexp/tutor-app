@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'loginFunctions.dart';
 import 'login_page.dart';
+import 'package:flutter_signin_button/flutter_signin_button.dart';
 
 class RegisterPage extends StatefulWidget {
   @override
@@ -36,11 +37,15 @@ class _RegisterPage extends State<RegisterPage> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 ///***If you have exported images you must have to copy those images in assets/images directory.
-                const Image(
-                  image: AssetImage("assets/icon.png"),
-                  height: 90,
-                  width: 90,
-                  fit: BoxFit.cover,
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(50.0),
+                  //make border radius more than 50% of square height & width
+                  child: Image.asset(
+                    "assets/icon.png",
+                    height: 90.0,
+                    width: 90.0,
+                    fit: BoxFit.cover, //change image fill type
+                  ),
                 ),
                 const Padding(
                   padding: EdgeInsets.fromLTRB(0, 8, 0, 30),
