@@ -29,7 +29,7 @@ Future<http.Response> requestLogin(String email, String pass) {
       body: jsonEncode(<String, String>{'email': email, 'password': pass}),
     );
   } catch (e) {
-    log("exception at sign in");
+    print("exception at sign in");
     rethrow;
   }
 }
