@@ -37,8 +37,7 @@ class _RegisterPage extends State<RegisterPage> {
               children: [
                 ///***If you have exported images you must have to copy those images in assets/images directory.
                 const Image(
-                  image: NetworkImage(
-                      "https://cdn3.iconfinder.com/data/icons/network-and-communications-6/130/291-128.png"),
+                  image: AssetImage("assets/icon.png"),
                   height: 90,
                   width: 90,
                   fit: BoxFit.cover,
