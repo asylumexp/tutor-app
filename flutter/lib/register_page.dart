@@ -220,10 +220,6 @@ class _RegisterPage extends State<RegisterPage> {
                           requestRegister(userController.text,
                                   emailController.text, passwordController.text)
                               .then((request) => print(request.body));
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (_) => RegisterPage()));
                         },
                         color: const Color(0xff3a57e8),
                         elevation: 0,
@@ -249,8 +245,16 @@ class _RegisterPage extends State<RegisterPage> {
                       flex: 1,
                       child: MaterialButton(
                         onPressed: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (_) => loginPage()));
+                          Navigator.push(
+                              context,
+                              PageRouteBuilder(
+                                  pageBuilder: (BuildContext context,
+                                      Animation<double> animation1,
+                                      Animation<double> animation2) {
+                                    return loginPage();
+                                  },
+                                  transitionDuration: Duration.zero,
+                                  reverseTransitionDuration: Duration.zero));
                         },
                         color: const Color(0xffffffff),
                         elevation: 0,

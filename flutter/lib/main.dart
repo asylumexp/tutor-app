@@ -68,8 +68,16 @@ class _LoginDemoState extends State<LoginDemo> {
                   color: Colors.blue, borderRadius: BorderRadius.circular(20)),
               child: TextButton(
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (_) => RegisterPage()));
+                  Navigator.push(
+                      context,
+                      PageRouteBuilder(
+                          pageBuilder: (BuildContext context,
+                              Animation<double> animation1,
+                              Animation<double> animation2) {
+                            return RegisterPage();
+                          },
+                          transitionDuration: Duration.zero,
+                          reverseTransitionDuration: Duration.zero));
                 },
                 child: const Text(
                   'go to reggisters',
@@ -90,7 +98,15 @@ class _LoginDemoState extends State<LoginDemo> {
               child: TextButton(
                 onPressed: () {
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => loginPage()));
+                      context,
+                      PageRouteBuilder(
+                          pageBuilder: (BuildContext context,
+                              Animation<double> animation1,
+                              Animation<double> animation2) {
+                            return loginPage();
+                          },
+                          transitionDuration: Duration.zero,
+                          reverseTransitionDuration: Duration.zero));
                 },
                 child: const Text(
                   'go to logogogin',

@@ -189,8 +189,14 @@ class _loginPage extends State<loginPage> {
                           onPressed: () {
                             Navigator.push(
                                 context,
-                                MaterialPageRoute(
-                                    builder: (_) => RegisterPage()));
+                                PageRouteBuilder(
+                                    pageBuilder: (BuildContext context,
+                                        Animation<double> animation1,
+                                        Animation<double> animation2) {
+                                      return RegisterPage();
+                                    },
+                                    transitionDuration: Duration.zero,
+                                    reverseTransitionDuration: Duration.zero));
                           },
                           color: Color.fromARGB(255, 212, 212, 212),
                           elevation: 0,
