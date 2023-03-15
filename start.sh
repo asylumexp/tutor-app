@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+echo "Not updated for latest!!"
 
 dir=$(pwd)
 sh="$dir/start.sh"
