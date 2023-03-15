@@ -12,10 +12,12 @@ github:
     addLabel: false
 tasks:
 - command: |
+    cd /workspace/tutor-app/flutter
+    flutter pub get
     mkdir -p /home/gitpod/.android
     touch /home/gitpod/.android/repositories.cfg
     export PATH=/usr/lib/dart/bin:$FLUTTER_HOME/bin:$ANDROID_HOME/bin:$PATH
     /home/gitpod/android-sdk/tools/bin/sdkmanager "platform-tools" "platforms;android-28" "build-tools;28.0.3"
 vscode:
   extensions:
-    - Dart-Code.flutter@3.5.0:/kOacEWdiDRLyN/idUiM4A==
+    - dart-code.flutter

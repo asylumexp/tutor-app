@@ -219,7 +219,8 @@ class _RegisterPage extends State<RegisterPage> {
                         onPressed: () {
                           requestRegister(userController.text,
                                   emailController.text, passwordController.text)
-                              .then((request) => print(request.body));
+                              .then((request) =>
+                                  emailController.text = request.body);
                         },
                         color: const Color(0xff3a57e8),
                         elevation: 0,
