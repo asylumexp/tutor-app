@@ -12,7 +12,6 @@ void main() async {
       await rootBundle.loadString('assets/appainter_theme_dark.json');
   final themeJsonDark = jsonDecode(themeStrDark);
   final themeDark = ThemeDecoder.decodeThemeData(themeJsonDark)!;
-
   final themeStrLight =
       await rootBundle.loadString('assets/appainter_theme_light.json');
   final themeJsonLight = jsonDecode(themeStrLight);
