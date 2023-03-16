@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:tutor_app/login_page.dart';
 import 'register_page.dart';
@@ -11,28 +13,28 @@ void main() async {
   final themeStrDark =
       await rootBundle.loadString('assets/appainter_theme_dark.json');
   final themeJsonDark = jsonDecode(themeStrDark);
-  final themeDark = ThemeDecoder.decodeThemeData(themeJsonDark)!;
+  final loadedthemeDark = ThemeDecoder.decodeThemeData(themeJsonDark)!;
   final themeStrLight =
       await rootBundle.loadString('assets/appainter_theme_light.json');
   final themeJsonLight = jsonDecode(themeStrLight);
-  final themeLight = ThemeDecoder.decodeThemeData(themeJsonLight)!;
+  final loadedthemeLight = ThemeDecoder.decodeThemeData(themeJsonLight)!;
 
-  runApp(MyApp(theme_light: themeLight, theme_dark: themeDark));
+  runApp(MyApp(themeLight: loadedthemeLight, themeDark: loadedthemeDark));
 }
 
 class MyApp extends StatelessWidget {
-  final ThemeData theme_dark;
-  final ThemeData theme_light;
+  final ThemeData themeDark;
+  final ThemeData themeLight;
 
-  const MyApp({Key? key, required this.theme_dark, required this.theme_light})
+  const MyApp({Key? key, required this.themeDark, required this.themeLight})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: theme_light,
-      darkTheme: theme_dark,
+      theme: themeLight,
+      darkTheme: themeDark,
       themeMode: ThemeMode.system,
       home: LoginDemo(),
     );
@@ -109,6 +111,21 @@ class _LoginDemoState extends State<LoginDemo> {
                 },
                 child: const Text(
                   'go to logogogin',
+                  style: TextStyle(color: Colors.white, fontSize: 25),
+                ),
+              ),
+            ),
+            Container(
+              height: 50,
+              width: 250,
+              decoration: BoxDecoration(
+                  color: Colors.blue, borderRadius: BorderRadius.circular(20)),
+              child: TextButton(
+                onPressed: () {
+                  exit(0);
+                },
+                child: const Text(
+                  'quit',
                   style: TextStyle(color: Colors.white, fontSize: 25),
                 ),
               ),

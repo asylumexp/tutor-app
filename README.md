@@ -16,4 +16,4 @@ steps to get amazing code
 None
 
 ### Untested on:
-Linux
+None

@@ -1,17 +1,18 @@
 #!/usr/bin/env bash
 echo "Not updated for latest!!"
-
+echo "dont use for now please."
 dir=$(pwd)
 sh="$dir/start.sh"
 cd ./server
 
-npm start & cd .. && cd ./client && npm start & echo 'Client and Server started' & cd ..
+npm install && npm start & cd .. && cd ./flutter && flutter run -d web-server --web-hostname=0.0.0.0 --web-port=4000 & echo 'Client and Server started'
 
 read text
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
         if [ "$text" == 'restart' ]; then
             killall -e node
+            killall -e dart
             ./start.sh
         elif [ "$text" == 'kill' ]; then
             killall -e node
@@ -19,6 +20,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 elif [[ "$OSTYPE" == "darwin"* ]]; then
         if [ "$text" == 'restart' ]; then
             killall -e node
+            killall -e dart
             ./start.sh
         elif [ "$text" == 'kill' ]; then
             killall -e node
