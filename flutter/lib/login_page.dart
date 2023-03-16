@@ -226,9 +226,8 @@ class _loginPage extends State<loginPage> {
                         flex: 1,
                         child: MaterialButton(
                           onPressed: () {
-                            requestLogin(emailController.text,
-                                    passwordController.text)
-                                .then((request) => parseLogin(request));
+                            requestLogin(
+                                emailController.text, passwordController.text);
                           },
                           color: Color.fromARGB(255, 212, 212, 212),
                           elevation: 0,
