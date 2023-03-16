@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
+const { body, validationResult } = require('express-validator');
 
 //REGISTER
 router.post("/register", async (req, res) => {
@@ -29,7 +30,13 @@ router.post("/register", async (req, res) => {
 //LOGIN
 router.post("/login", async (req, res) => {
   try {
+    body('username').isEmail()
     const user = await User.findOne({ email: req.body.email });
+    const errors = validationResult(req);
+    print(errors.array())
+    if (errors.array().includes(req.user)) {
+      print("test")
+    }
     if (!user) {
       res.status(404).json("user not found");
     } else if (
