@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -40,10 +41,29 @@ void requestLogin(String email, String pass) async {
       case 404:
         log("bad user");
         break;
+      case 555:
+        List<String> list = res.body
+            .toString()
+            .replaceAll("[", "")
+            .replaceAll("]", "")
+            .replaceAll("},{", "|")
+            .replaceAll("{", "")
+            .replaceAll("}", "")
+            .split("|");
+
+        for (final e in list) {
+          List<String> currList = e.split(",");
+          switch (currList[2]) {
+            case '"param":"password"':
+              break;
+            case '"param":"email"':
+              break;
+          }
+        }
+        break;
     }
   } catch (e) {
-    print("exception at sign in");
-    rethrow;
+    log("exception at signin");
   }
 }
 
