@@ -7,8 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 Future<http.Response> requestRegister(String user, String email, String pass) {
   try {
     return http.post(
-      Uri.parse(
-          'https://9000-samh06-tutorapp-rfd447s5uk7.ws-us90.gitpod.io/api/auth/register'),
+      Uri.parse('http://localhost:9000/api/auth/register'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -24,8 +23,7 @@ Future<http.Response> requestRegister(String user, String email, String pass) {
 void requestLogin(String email, String pass) async {
   try {
     final res = await http.post(
-      Uri.parse(
-          'https://9000-samh06-tutorapp-rfd447s5uk7.ws-us90.gitpod.io/api/auth/login'),
+      Uri.parse('http://localhost:9000/api/auth/login'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -44,19 +42,18 @@ void requestLogin(String email, String pass) async {
       case 555:
         List<String> list = res.body
             .toString()
-            .replaceAll("[", "")
-            .replaceAll("]", "")
             .replaceAll("},{", "|")
-            .replaceAll("{", "")
-            .replaceAll("}", "")
+            .replaceAll(RegExp(r'[\[\]{}]+'), "")
             .split("|");
 
         for (final e in list) {
           List<String> currList = e.split(",");
           switch (currList[2]) {
             case '"param":"password"':
+              log("password is officially bad");
               break;
             case '"param":"email"':
+              log("email is officially bad");
               break;
           }
         }
