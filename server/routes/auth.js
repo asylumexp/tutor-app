@@ -3,6 +3,13 @@ const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const { body, validationResult } = require('express-validator');
 
+var RateLimit = require('express-rate-limit');
+var limiter = RateLimit({
+  windowMs: 1*60*1000, // 1 minute
+  max: 30
+});
+
+router.use(limiter)
 //REGISTER
 router.post("/register", async (req, res) => {
   try {
