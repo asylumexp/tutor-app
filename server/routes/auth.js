@@ -28,19 +28,16 @@ router.post("/register", async (req, res) => {
 });
 
 //LOGIN
-router.post("/login", async (req, res) => {
+router.post("/login", body('email').isEmail().normalizeEmail(), body('password').isStrongPassword(), async (req, res) => {
   try {
-    body('username').isEmail()
-    const user = await User.findOne({ email: req.body.email });
     const errors = validationResult(req);
-    print(errors.array())
-    if (errors.array().includes(req.user)) {
-      print("test")
-    }
-    if (!user) {
+    const user = await User.findOne({ email: body('email').isEmail().normalizeEmail() });
+    if (errors.array) {
+      res.status(555).json(errors.array())
+    } else if (!user) {
       res.status(404).json("user not found");
     } else if (
-      (await bcrypt.compare(req.body.password, user.password)) == false
+      (await bcrypt.compare(body('password').isStrongPassword().unescape().trim(), user.password)) == false
     )
       res.status(400).json("wrong password");
     else {
