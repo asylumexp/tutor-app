@@ -32,7 +32,7 @@ router.post("/login", body('email').isEmail().normalizeEmail(), body('password')
   try {
     const errors = validationResult(req);
     const user = await User.findOne({ email: body('email').isEmail().normalizeEmail() });
-    if (errors.array) {
+    if (errors.array().length) {
       res.status(555).json(errors.array())
     } else if (!user) {
       res.status(404).json("user not found");
