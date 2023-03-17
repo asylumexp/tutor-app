@@ -2,6 +2,14 @@ const User = require("../models/User");
 const router = require("express").Router();
 const bcrypt = require("bcryptjs");
 
+var RateLimit = require('express-rate-limit');
+var limiter = RateLimit({
+  windowMs: 1*60*1000, // 1 minute
+  max: 30
+});
+
+router.use(limiter)
+
 //update user
 router.put("/:id", async (req, res) => {
   // removed || req.body.isAdmin from the below if statement because it seemed useless because anyone can say they are an admin

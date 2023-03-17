@@ -1,6 +1,15 @@
 const router = require("express").Router();
 const Post = require("../models/Post");
 const User = require("../models/User");
+
+var RateLimit = require('express-rate-limit');
+var limiter = RateLimit({
+  windowMs: 1*60*1000, // 1 minute
+  max: 30
+});
+
+router.use(limiter)
+
 router.post("/", async (req, res) => {
     const newPost = new Post(req.body);
     try {
