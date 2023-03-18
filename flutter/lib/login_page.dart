@@ -11,6 +11,7 @@ class loginPage extends StatefulWidget {
 class _loginPage extends State<loginPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  var _errorMessages = null;
 
   @override
   void dispose() {
@@ -91,7 +92,7 @@ class _loginPage extends State<loginPage> {
                       disabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(4.0),
                         borderSide: const BorderSide(
-                            color: Color(0xff9e9e9e), width: 1),
+                            color: Color.fromARGB(255, 255, 0, 0), width: 1),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(4.0),
@@ -103,18 +104,28 @@ class _loginPage extends State<loginPage> {
                         borderSide: const BorderSide(
                             color: Color(0xff9e9e9e), width: 1),
                       ),
+                      errorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(4.0),
+                        borderSide: const BorderSide(
+                            color: Color.fromARGB(123, 255, 0, 0), width: 1),
+                      ),
+                      focusedErrorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(4.0),
+                        borderSide: const BorderSide(
+                            color: Color.fromARGB(123, 255, 0, 0), width: 1),
+                      ),
                       labelText: "Email",
                       labelStyle: const TextStyle(
                         fontWeight: FontWeight.w400,
                         fontStyle: FontStyle.normal,
                         fontSize: 16,
-                        // color: Color(0xff9e9e9e),
                       ),
                       filled: true,
                       fillColor: const Color(0x00f2f2f3),
                       isDense: false,
                       contentPadding: const EdgeInsets.symmetric(
                           vertical: 8, horizontal: 12),
+                      errorText: _errorMessages,
                     ),
                   ),
                 ),
@@ -226,8 +237,17 @@ class _loginPage extends State<loginPage> {
                         flex: 1,
                         child: MaterialButton(
                           onPressed: () {
-                            requestLogin(
-                                emailController.text, passwordController.text);
+                            requestLogin(emailController.text,
+                                    passwordController.text)
+                                .then((errors) {
+                              if (errors == "[]") {
+                                _errorMessages = null;
+                              } else {
+                                _errorMessages = errors;
+                              }
+                            });
+                            setState(() {});
+                            print(_errorMessages);
                           },
                           color: Color.fromARGB(255, 212, 212, 212),
                           elevation: 0,

@@ -29,7 +29,7 @@ void main() {
 
     // Build our app and trigger a frame.
     await tester
-        .pumpWidget(MyApp(theme_dark: themeDark, theme_light: themeLight));
+        .pumpWidget(MyApp(themeDark: themeDark, themeLight: themeLight));
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);

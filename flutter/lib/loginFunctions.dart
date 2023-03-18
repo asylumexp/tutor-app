@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tutor_app/login_page.dart';
 
 Future<http.Response> requestRegister(String user, String email, String pass) {
   try {
@@ -20,7 +21,8 @@ Future<http.Response> requestRegister(String user, String email, String pass) {
   }
 }
 
-void requestLogin(String email, String pass) async {
+Future<String> requestLogin(String email, String pass) async {
+  var errors = [];
   try {
     final res = await http.post(
       Uri.parse('http://localhost:9000/api/auth/login'),
@@ -34,10 +36,10 @@ void requestLogin(String email, String pass) async {
         log("success");
         break;
       case 400:
-        log("bad pass");
+        errors.add("bad pass");
         break;
       case 404:
-        log("bad user");
+        errors.add("bad user");
         break;
       case 555:
         List<String> list = res.body
@@ -50,10 +52,10 @@ void requestLogin(String email, String pass) async {
           List<String> currList = e.split(",");
           switch (currList[2]) {
             case '"param":"password"':
-              log("password is officially bad");
+              errors.add("password is officially bad");
               break;
             case '"param":"email"':
-              log("email is officially bad");
+              errors.add("email is officially bad");
               break;
           }
         }
@@ -62,6 +64,7 @@ void requestLogin(String email, String pass) async {
   } catch (e) {
     log("exception at signin");
   }
+  return errors.toString();
 }
 
 void parseLogin(http.Response response) {
