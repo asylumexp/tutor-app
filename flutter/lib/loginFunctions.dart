@@ -38,7 +38,7 @@ Future<List> requestLogin(String email, String pass) async {
       case 400:
         errors.add(["password", "bad pass"]);
         break;
-      case 404:
+      case 422:
         errors.add(["email", "bad user"]);
         break;
       case 555:

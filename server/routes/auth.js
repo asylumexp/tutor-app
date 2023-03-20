@@ -48,7 +48,7 @@ router.post(
       if (errors.array().length) {
         res.status(555).json(errors.array());
       } else if (!user) {
-        res.status(404).json("user not found");
+        res.status(422).json("user not found");
       } else if (
         (await bcrypt.compare(
           body(password).isStrongPassword().unescape().trim(),
