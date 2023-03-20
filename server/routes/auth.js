@@ -38,21 +38,25 @@ router.post("/register", async (req, res) => {
 router.post("/login", body('email').isEmail().normalizeEmail(), body('password').isStrongPassword(), async (req, res) => {
   try {
     const errors = validationResult(req);
-    const user = await User.findOne({ email: body('email').isEmail().normalizeEmail() });
     if (errors.array().length) {
       res.status(555).json(errors.array())
-    } else if (!user) {
-      res.status(404).json("user not found");
-    } else if (
-      (await bcrypt.compare(body('password').isStrongPassword().unescape().trim(), user.password)) == false
-    )
-      res.status(400).json("wrong password");
-    else {
-      res.status(200).json({ userId: user._id });
+    } else {
+      console.log(body('email'))
+      const user = await User.findOne({ email: req.body.email });
+    
+      if (!user) {
+        res.status(404).json("user not found");
+      } else if (
+        (await bcrypt.compare(req.body.password, user.password)) == false
+      )
+        res.status(400).json("wrong password");
+      else {
+        res.status(200).json({ userId: user._id });
+      }
     }
   } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
+      console.log(err);
+      res.status(500).json(err);
   }
 });
 
