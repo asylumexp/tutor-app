@@ -11,7 +11,8 @@ class loginPage extends StatefulWidget {
 class _loginPage extends State<loginPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  var _errorMessages = null;
+  dynamic _errorMessagesEmail = null;
+  dynamic _errorMessagesPasssword = null;
 
   @override
   void dispose() {
@@ -125,7 +126,7 @@ class _loginPage extends State<loginPage> {
                       isDense: false,
                       contentPadding: const EdgeInsets.symmetric(
                           vertical: 8, horizontal: 12),
-                      errorText: _errorMessages,
+                      errorText: _errorMessagesEmail,
                     ),
                   ),
                 ),
@@ -143,8 +144,8 @@ class _loginPage extends State<loginPage> {
                   decoration: InputDecoration(
                     disabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(4.0),
-                      borderSide:
-                          const BorderSide(color: Color(0xff9e9e9e), width: 1),
+                      borderSide: const BorderSide(
+                          color: Color.fromARGB(255, 255, 0, 0), width: 1),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(4.0),
@@ -155,6 +156,16 @@ class _loginPage extends State<loginPage> {
                       borderRadius: BorderRadius.circular(4.0),
                       borderSide:
                           const BorderSide(color: Color(0xff9e9e9e), width: 1),
+                    ),
+                    errorBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(4.0),
+                      borderSide: const BorderSide(
+                          color: Color.fromARGB(123, 255, 0, 0), width: 1),
+                    ),
+                    focusedErrorBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(4.0),
+                      borderSide: const BorderSide(
+                          color: Color.fromARGB(123, 255, 0, 0), width: 1),
                     ),
                     labelText: "Password",
                     labelStyle: const TextStyle(
@@ -168,6 +179,7 @@ class _loginPage extends State<loginPage> {
                     isDense: false,
                     contentPadding:
                         const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+                    errorText: _errorMessagesPasssword,
                   ),
                 ),
                 const Padding(
@@ -236,18 +248,34 @@ class _loginPage extends State<loginPage> {
                       Expanded(
                         flex: 1,
                         child: MaterialButton(
-                          onPressed: () {
-                            requestLogin(emailController.text,
+                          onPressed: () async {
+                            await requestLogin(emailController.text,
                                     passwordController.text)
                                 .then((errors) {
-                              if (errors == "[]") {
-                                _errorMessages = null;
-                              } else {
-                                _errorMessages = errors;
+                              List<int> _errorMessages = [0, 0];
+                              if (errors.isNotEmpty) {
+                                for (int i = 0; i < errors.length; i++) {
+                                  if (errors[i][0] == "email") {
+                                    _errorMessagesEmail ??= "";
+                                    _errorMessagesEmail =
+                                        _errorMessagesEmail + errors[i][1];
+                                    _errorMessages[0] += 1;
+                                  } else if (errors[i][0] == "password") {
+                                    _errorMessagesPasssword ??= "";
+                                    _errorMessagesPasssword =
+                                        _errorMessagesPasssword + errors[i][1];
+                                    _errorMessages[1] += 1;
+                                  }
+                                }
+                              }
+
+                              if (_errorMessages[0] == 0) {
+                                _errorMessagesEmail = null;
+                              } else if (_errorMessages[1] == 0) {
+                                _errorMessagesPasssword = null;
                               }
                             });
                             setState(() {});
-                            print(_errorMessages);
                           },
                           color: Color.fromARGB(255, 212, 212, 212),
                           elevation: 0,

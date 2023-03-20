@@ -21,7 +21,7 @@ Future<http.Response> requestRegister(String user, String email, String pass) {
   }
 }
 
-Future<String> requestLogin(String email, String pass) async {
+Future<List> requestLogin(String email, String pass) async {
   var errors = [];
   try {
     final res = await http.post(
@@ -36,10 +36,10 @@ Future<String> requestLogin(String email, String pass) async {
         log("success");
         break;
       case 400:
-        errors.add("bad pass");
+        errors.add(["password", "bad pass"]);
         break;
       case 404:
-        errors.add("bad user");
+        errors.add(["email", "bad user"]);
         break;
       case 555:
         List<String> list = res.body
@@ -49,13 +49,13 @@ Future<String> requestLogin(String email, String pass) async {
             .split("|");
 
         for (final e in list) {
-          List<String> currList = e.split(",");
+          List currList = e.split(",");
           switch (currList[2]) {
             case '"param":"password"':
-              errors.add("password is officially bad");
+              errors.add(["password", "password is officially bad"]);
               break;
             case '"param":"email"':
-              errors.add("email is officially bad");
+              errors.add(["email", "email is officially bad"]);
               break;
           }
         }
@@ -64,7 +64,7 @@ Future<String> requestLogin(String email, String pass) async {
   } catch (e) {
     log("exception at signin");
   }
-  return errors.toString();
+  return errors;
 }
 
 void parseLogin(http.Response response) {
