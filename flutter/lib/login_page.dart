@@ -252,7 +252,6 @@ class _loginPage extends State<loginPage> {
                             await requestLogin(emailController.text,
                                     passwordController.text)
                                 .then((errors) {
-                              List<int> errorMessages = [0, 0];
                               _errorMessagesEmail = null;
                               _errorMessagesPasssword = null;
                               if (errors.isNotEmpty) {
@@ -261,12 +260,10 @@ class _loginPage extends State<loginPage> {
                                     _errorMessagesEmail ??= "";
                                     _errorMessagesEmail =
                                         _errorMessagesEmail + errors[i][1];
-                                    errorMessages[0] += 1;
                                   } else if (errors[i][0] == "password") {
                                     _errorMessagesPasssword ??= "";
                                     _errorMessagesPasssword =
                                         _errorMessagesPasssword + errors[i][1];
-                                    errorMessages[1] += 1;
                                   }
                                 }
                               }

@@ -1,15 +1,15 @@
 const router = require("express").Router();
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
-const { body, validationResult } = require('express-validator');
+const { body, validationResult } = require("express-validator");
 
-var RateLimit = require('express-rate-limit');
+var RateLimit = require("express-rate-limit");
 var limiter = RateLimit({
-  windowMs: 1*60*1000, // 1 minute
-  max: 30
+  windowMs: 1 * 60 * 1000, // 1 minute
+  max: 30,
 });
 
-router.use(limiter)
+router.use(limiter);
 //REGISTER
 router.post("/register", async (req, res) => {
   try {
@@ -35,29 +35,33 @@ router.post("/register", async (req, res) => {
 });
 
 //LOGIN
-router.post("/login", body('email').isEmail().normalizeEmail(), body('password').isStrongPassword(), async (req, res) => {
-  try {
-    const errors = validationResult(req);
-    if (errors.array().length) {
-      res.status(555).json(errors.array())
-    } else {
-      console.log(body('email'))
-      const user = await User.findOne({ email: req.body.email });
-    
-      if (!user) {
-        res.status(404).json("user not found");
-      } else if (
-        (await bcrypt.compare(req.body.password, user.password)) == false
-      )
-        res.status(400).json("wrong password");
-      else {
-        res.status(200).json({ userId: user._id });
+router.post(
+  "/login",
+  body("email").isEmail().normalizeEmail(),
+  body("password").isStrongPassword(),
+  async (req, res) => {
+    try {
+      const errors = validationResult(req);
+      if (errors.array().length) {
+        res.status(555).json(errors.array());
+      } else {
+        const user = await User.findOne({ email: req.body.email });
+
+        if (!user) {
+          res.status(404).json("user not found");
+        } else if (
+          (await bcrypt.compare(req.body.password, user.password)) == false
+        )
+          res.status(400).json("wrong password");
+        else {
+          res.status(200).json({ userId: user._id });
+        }
       }
-    }
-  } catch (err) {
+    } catch (err) {
       console.log(err);
       res.status(500).json(err);
+    }
   }
-});
+);
 
 module.exports = router;
