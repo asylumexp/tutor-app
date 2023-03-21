@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:tutor_app/login_page.dart';
 import 'register_page.dart';
