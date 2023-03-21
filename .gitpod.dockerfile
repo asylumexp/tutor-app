@@ -1,3 +1,4 @@
+# Takes 508.3 seconds to build
 FROM gitpod/workspace-full:latest
 
 ENV FLUTTER_HOME=/home/gitpod/flutter

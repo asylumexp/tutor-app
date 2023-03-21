@@ -84,7 +84,9 @@ router.post("/login", loginValidate, async (req, res) => {
     res.status(555).json(errors.array());
   } else {
     try {
-      const user = await User.findOne({ email: req.body.email });
+      const user = await User.findOne({
+        email: body("email").normalizeEmail().trim().escape(),
+      });
       if (!user) {
         res.status(404).json("user not found");
       } else if (
