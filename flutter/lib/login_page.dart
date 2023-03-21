@@ -258,12 +258,15 @@ class _loginPage extends State<loginPage> {
                                 for (int i = 0; i < errors.length; i++) {
                                   if (errors[i][0] == "email") {
                                     _errorMessagesEmail ??= "";
-                                    _errorMessagesEmail =
-                                        _errorMessagesEmail + errors[i][1];
+                                    _errorMessagesEmail = _errorMessagesEmail +
+                                        " " +
+                                        errors[i][1];
                                   } else if (errors[i][0] == "password") {
                                     _errorMessagesPasssword ??= "";
                                     _errorMessagesPasssword =
-                                        _errorMessagesPasssword + errors[i][1];
+                                        _errorMessagesPasssword +
+                                            " " +
+                                            errors[i][1];
                                   }
                                 }
                               }

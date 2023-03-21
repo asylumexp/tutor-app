@@ -220,26 +220,26 @@ packages:
     dependency: transitive
     description:
       name: json_class
-      sha256: "088d4e6177451109f7b42607b3eb870d6efec44fe0c3c5e7d950b6309cc754dd"
+      sha256: "8b29217a33b1e6a46eaf471f47f1bd4bbc6f56a306039d2e7509bb93f4cc57c5"
       url: "https://pub.dev"
     source: hosted
-    version: "2.1.6+1"
+    version: "2.2.0"
   json_schema2:
     dependency: transitive
     description:
       name: json_schema2
-      sha256: c5e118e1ec1b936edb5765172b39e1de58326a22cd8e5f4cadca9e8273532dd8
+      sha256: "0ae8dbb0803ad85e994314ec1f4e5465766f4b522c16e1e542315c7e50cbd6db"
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.3+5"
+    version: "2.0.3+6"
   json_theme:
     dependency: "direct main"
     description:
       name: json_theme
-      sha256: cbf8661af92c4eaae626145e8d4e2ef9e4f1f0467530c85bdfe7b1184eef9842
+      sha256: f734b2cd391a505fe9391fa97cdacf06026b7e4a1ecf386654a0b4e5f1644157
       url: "https://pub.dev"
     source: hosted
-    version: "5.0.0+5"
+    version: "5.0.1+2"
   lints:
     dependency: transitive
     description:
@@ -340,10 +340,10 @@ packages:
     dependency: transitive
     description:
       name: pointycastle
-      sha256: db7306cf0249f838d1a24af52b5a5887c5bf7f31d8bb4e827d071dc0939ad346
+      sha256: "57b6b78df14175658f09c5dfcfc51a46ad9561a3504fe679913dab404d0cc0f2"
       url: "https://pub.dev"
     source: hosted
-    version: "3.6.2"
+    version: "3.7.0"
   process:
     dependency: transitive
     description:
@@ -364,10 +364,10 @@ packages:
     dependency: transitive
     description:
       name: rest_client
-      sha256: a5ba0823c55ceaaba8886b1d3e749deed5ab8a17befe9e457bbc2c880493b265
+      sha256: "7e5174682aa297409b19bf09061d11306be8ee6b69d96ca5bb5f514a043bd088"
       url: "https://pub.dev"
     source: hosted
-    version: "2.2.1+5"
+    version: "2.2.1+6"
   shared_preferences:
     dependency: "direct main"
     description:

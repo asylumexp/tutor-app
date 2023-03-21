@@ -50,12 +50,13 @@ Future<List> requestLogin(String email, String pass) async {
 
         for (final e in list) {
           List currList = e.split(",");
-          switch (currList[2]) {
-            case '"param":"password"':
-              errors.add(["password", "password is officially bad"]);
+          switch (currList[1]) {
+            case '"msg":"password"':
+              errors.add(
+                  ["password", currList[2].toString().replaceAll('"', "")]);
               break;
-            case '"param":"email"':
-              errors.add(["email", "email is officially bad"]);
+            case '"msg":"email"':
+              errors.add(["email", currList[2].toString().replaceAll('"', "")]);
               break;
           }
         }
