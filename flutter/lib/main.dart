@@ -6,8 +6,19 @@ import 'register_page.dart';
 import 'package:json_theme/json_theme.dart';
 import 'package:flutter/services.dart'; // For rootBundle
 import 'dart:convert';
+import 'firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 
+/// ```dart
+/// import 'firebase_options.dart';
+/// // ...
+/// await Firebase.initializeApp(
+///   options: DefaultFirebaseOptions.currentPlatform,
+/// );
 void main() async {
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   WidgetsFlutterBinding.ensureInitialized();
 
   final themeStrDark =
