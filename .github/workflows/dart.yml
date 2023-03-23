@@ -3,70 +3,61 @@ on:
   workflow_dispatch:
 jobs:
   build_web:
-    defaults:
-      run:
-        working-directory: ./flutter
     name: Build Flutter (Web)
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: subosito/flutter-action@v2
-      with:
-        channel: 'stable'
-    - run: flutter pub get
-    - run: flutter config --enable-web
-    - run: flutter build web
-    - name: Archive Production Artifact
-      uses: actions/upload-artifact@master
-      with:
-        name: web-build
-        path: flutter/build/web
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+      - run: flutter pub get
+      - run: flutter config --enable-web
+      - run: flutter build web
+      - name: Archive Production Artifact
+        uses: actions/upload-artifact@master
+        with:
+          name: web-build
+          path: flutter/build/web
   build_ios:
-    defaults:
-      run:
-        working-directory: ./flutter
     name: Build Flutter (iOS)
     runs-on: macOS-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-java@v2
-      with:
-        distribution: 'zulu'
-        java-version: '12'
-    - uses: subosito/flutter-action@v2
-      with:
-        channel: 'stable'
-    - run: flutter pub get
-    - run: flutter clean
-    - run: flutter build ios --release --no-codesign
-    - name: Upload iPA
-      uses: actions/upload-artifact@master
-      with:
-        name: ios-build
-        path: flutter/build/ios/iphoneos
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v2
+        with:
+          distribution: "zulu"
+          java-version: "12"
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+      - run: flutter pub get
+      - run: flutter clean
+      - run: flutter build ios --release --no-codesign
+      - name: Upload iPA
+        uses: actions/upload-artifact@master
+        with:
+          name: ios-build
+          path: flutter/build/ios/iphoneos
   build_apk:
-    defaults:
-      run:
-        working-directory: ./flutter
     name: Build Flutter (Android)
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-java@v2
-      with:
-        distribution: 'zulu'
-        java-version: '12'
-    - uses: subosito/flutter-action@v2
-      with:
-        channel: 'stable'
-    - run: flutter pub get
-#     - run: flutter build apk --target-platform android-arm,android-arm64 --split-per-abi
-#     - run: flutter build appbundle --target-platform android-arm,android-arm64
-    - run: flutter build appbundle
-    - run: ls ./build/app
-    - run: ls ./build/app/outputs/
-    - name: Upload APK
-      uses: actions/upload-artifact@master
-      with:
-        name: apk-build
-        path: flutter/build/app/outputs/apk/release
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v2
+        with:
+          distribution: "zulu"
+          java-version: "12"
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+      - run: flutter pub get
+      #     - run: flutter build apk --target-platform android-arm,android-arm64 --split-per-abi
+      #     - run: flutter build appbundle --target-platform android-arm,android-arm64
+      - run: flutter build appbundle
+      - run: ls ./build/app
+      - run: ls ./build/app/outputs/
+      - name: Upload APK
+        uses: actions/upload-artifact@master
+        with:
+          name: apk-build
+          path: flutter/build/app/outputs/apk/release

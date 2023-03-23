@@ -1,19 +1,17 @@
 # tutor-app
-### Made to work with Gitpod!
+
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/samh06/tutor-app)
 
-steps to get amazing code
-(most work on [firebase/firebase-init branch](https://github.com/samh06/tutor-app/tree/firebase/firebase-init) rn)
-1. Clone this repo with `git clone https://github.com/samh06/tutor-app/`
-2. Run `cd ./tutor-app`
-3. Run `cd ./client && npm install && cd ../server && npm install && cd ..`
-4. Run `./start.sh` to start the server and client
-5. Go to http://localhost:3000 and view the amazing api calls
+### Prereqs
 
-## Flutter app
+You need [Firebase](https://firebase.google.com/) and [Flutter](https://flutter.dev)
 
 ### Currently broken on:
-None
 
-### Untested on:
-None
+Windows, Linux
+
+### Steps to run:
+
+1. After making sure you have Firebase, run dart pub `flutter pub global activate flutterfire_cli` in any terminal window
+2. Then open tutor-app in any cmd window and run `flutter pub get`
+3. Now you're ready to run.
