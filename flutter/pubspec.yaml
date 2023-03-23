@@ -39,6 +39,9 @@ dependencies:
   json_theme: ^5.0.0+5
   flutter_signin_button: ^2.0.0
   firebase_core: ^2.8.0
+  firebase_auth: ^4.3.0
+dependency_overrides:
+  intl: ^0.18.0
 
 dev_dependencies:
   flutter_test:

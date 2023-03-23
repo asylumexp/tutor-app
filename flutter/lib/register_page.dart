@@ -218,9 +218,7 @@ class _RegisterPage extends State<RegisterPage> {
                       child: MaterialButton(
                         onPressed: () {
                           requestRegister(userController.text,
-                                  emailController.text, passwordController.text)
-                              .then((request) =>
-                                  emailController.text = request.body);
+                              emailController.text, passwordController.text);
                         },
                         color: const Color(0xff3a57e8),
                         elevation: 0,

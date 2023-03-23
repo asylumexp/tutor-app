@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'loginFunctions.dart';
 import 'register_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class loginPage extends StatefulWidget {
   @override
@@ -249,28 +250,8 @@ class _loginPage extends State<loginPage> {
                         flex: 1,
                         child: MaterialButton(
                           onPressed: () async {
-                            await requestLogin(emailController.text,
-                                    passwordController.text)
-                                .then((errors) {
-                              _errorMessagesEmail = null;
-                              _errorMessagesPasssword = null;
-                              if (errors.isNotEmpty) {
-                                for (int i = 0; i < errors.length; i++) {
-                                  if (errors[i][0] == "email") {
-                                    _errorMessagesEmail ??= "";
-                                    _errorMessagesEmail = _errorMessagesEmail +
-                                        " " +
-                                        errors[i][1];
-                                  } else if (errors[i][0] == "password") {
-                                    _errorMessagesPasssword ??= "";
-                                    _errorMessagesPasssword =
-                                        _errorMessagesPasssword +
-                                            " " +
-                                            errors[i][1];
-                                  }
-                                }
-                              }
-                            });
+                            requestLogin(
+                                emailController.text, passwordController.text);
                             setState(() {});
                           },
                           color: Color.fromARGB(255, 212, 212, 212),
