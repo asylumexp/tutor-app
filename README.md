@@ -3,7 +3,7 @@
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/samh06/tutor-app)
 
 steps to get amazing code
-
+(most work on [firebase/firebase-init branch](https://github.com/samh06/tutor-app/tree/firebase/firebase-init) rn)
 1. Clone this repo with `git clone https://github.com/samh06/tutor-app/`
 2. Run `cd ./tutor-app`
 3. Run `cd ./client && npm install && cd ../server && npm install && cd ..`
