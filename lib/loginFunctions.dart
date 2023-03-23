@@ -28,7 +28,7 @@ Future<dynamic> requestLogin(String email, String pass) async {
   try {
     final credential = await FirebaseAuth.instance
         .signInWithEmailAndPassword(email: email, password: pass);
-    print(credential.user!.uid);
+    print(credential.user?.uid);
   } on FirebaseAuthException catch (e) {
     print(e.code);
     return e.code;
