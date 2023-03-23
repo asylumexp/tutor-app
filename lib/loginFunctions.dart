@@ -26,17 +26,12 @@ Future<dynamic> requestRegister(String user, String email, String pass) async {
 
 Future<dynamic> requestLogin(String email, String pass) async {
   try {
-    final creds = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-      email: email,
-      password: pass,
-    );
-    return creds;
+    final credential = await FirebaseAuth.instance
+        .signInWithEmailAndPassword(email: email, password: pass);
+    print(credential.user!.uid);
   } on FirebaseAuthException catch (e) {
-    log(e.code);
+    print(e.code);
     return e.code;
-  } catch (e) {
-    log(e.toString());
-    return e;
   }
 }
 
