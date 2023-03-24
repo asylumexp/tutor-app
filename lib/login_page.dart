@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'loginFunctions.dart';
@@ -250,8 +252,19 @@ class _loginPage extends State<loginPage> {
                         flex: 1,
                         child: MaterialButton(
                           onPressed: () async {
-                            requestLogin(
-                                emailController.text, passwordController.text);
+                            await requestLogin(emailController.text,
+                                    passwordController.text)
+                                .then((value) {
+                              _errorMessagesEmail = null;
+                              _errorMessagesPasssword = null;
+                              if (value[0] == "success") {
+                                log(value[1]);
+                              } else if (value[0] == "email") {
+                                _errorMessagesEmail ??= value[1];
+                              } else if (value[0] == "password") {
+                                _errorMessagesPasssword ??= value[1];
+                              }
+                            });
                             setState(() {});
                           },
                           color: Color.fromARGB(255, 212, 212, 212),

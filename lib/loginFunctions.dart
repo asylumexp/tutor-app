@@ -24,14 +24,14 @@ Future<dynamic> requestRegister(String user, String email, String pass) async {
   }
 }
 
-Future<dynamic> requestLogin(String email, String pass) async {
+Future<List<dynamic>> requestLogin(String email, String pass) async {
   try {
     final credential = await FirebaseAuth.instance
         .signInWithEmailAndPassword(email: email, password: pass);
-    print(credential.user?.uid);
+    return ["success", credential.user?.uid.toString()];
   } on FirebaseAuthException catch (e) {
-    print(e.code);
-    return e.code;
+    final code = codeToUser(e.code);
+    return code;
   }
 }
 
@@ -48,7 +48,22 @@ void addStringToSF(String key, String value) async {
   prefs.setString(key, value);
 }
 
-getValue(String key) async {
+void getValue(String key) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   print(prefs.get(key));
+}
+
+List<String> codeToUser(String code) {
+  switch (code) {
+    case "invalid-email":
+      return ["email", "This email is invalid."];
+    case "user-disabled":
+      return ["email", "This user is disabled."];
+    case "user-not-found":
+      return ["email", "No user was found from this email."];
+    case "wrong-password":
+      return ["password", "This password is invalid."];
+    default:
+      return ["email", "An internal server error occurred."];
+  }
 }
