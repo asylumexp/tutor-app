@@ -12,6 +12,6 @@ Windows, Linux
 
 ### Steps to run:
 
-1. After making sure you have Firebase, run dart pub `flutter pub global activate flutterfire_cli` in any terminal window
-2. Then open tutor-app in any cmd window and run `flutter pub get`
-3. Now you're ready to run.
+1. After making sure you have Firebase, run `flutter pub global activate flutterfire_cli` in any terminal window.
+2. Then open tutor-app in any cmd window and run `flutter pub get`.
+3. Now you're ready to run. (You can run it as a webserver using start.sh).
