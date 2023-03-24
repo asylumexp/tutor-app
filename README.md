@@ -8,7 +8,7 @@ You need [Firebase](https://firebase.google.com/) and [Flutter](https://flutter.
 
 ### Currently broken on:
 
-Windows, Linux
+Windows, Linux, (Android untested, most likely broken)
 
 ### Steps to run:
 

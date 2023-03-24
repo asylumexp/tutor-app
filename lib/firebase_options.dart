@@ -63,21 +63,21 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyDShVewQY10KRbCtv0cgPOLQO4887AUyf8',
-    appId: '1:631895189358:ios:4e6fdd45a6b9450b20037f',
+    appId: '1:631895189358:ios:046671b6540c715620037f',
     messagingSenderId: '631895189358',
     projectId: 'tutor-app-1a9ff',
     storageBucket: 'tutor-app-1a9ff.appspot.com',
-    iosClientId: '631895189358-fcpldbjl6o3tkkuh1iic3i1tu9qj8jiq.apps.googleusercontent.com',
-    iosBundleId: 'com.example.tutorApp',
+    iosClientId: '631895189358-1a97tmub0f999vifkkscehrs9bl7s1pc.apps.googleusercontent.com',
+    iosBundleId: 'com.samh.tutorApp',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDShVewQY10KRbCtv0cgPOLQO4887AUyf8',
-    appId: '1:631895189358:ios:4e6fdd45a6b9450b20037f',
+    apiKey: 'AIzaSyDKbh-q1YVaOPZllHdPq6g6ntg7Fsl6BhE',
+    appId: '1:631895189358:ios:2dd4b637d0cc886320037f',
     messagingSenderId: '631895189358',
     projectId: 'tutor-app-1a9ff',
     storageBucket: 'tutor-app-1a9ff.appspot.com',
-    iosClientId: '631895189358-fcpldbjl6o3tkkuh1iic3i1tu9qj8jiq.apps.googleusercontent.com',
-    iosBundleId: 'com.example.tutorApp',
+    iosClientId: '631895189358-df16ara7mki0s9qqtdjo31ti1slrfghh.apps.googleusercontent.com',
+    iosBundleId: 'com.samh.tutorAppMacOS',
   );
 }

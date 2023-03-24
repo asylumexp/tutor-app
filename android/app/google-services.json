@@ -29,6 +29,13 @@
             {
               "client_id": "631895189358-tlf6cu4bs13unr7n7mj3gc3p3u3h4qa2.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "631895189358-1a97tmub0f999vifkkscehrs9bl7s1pc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.samh.tutorApp"
+              }
             }
           ]
         }

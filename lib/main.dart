@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -10,10 +11,14 @@ import 'firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
   WidgetsFlutterBinding.ensureInitialized();
+  try {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+  } catch (e) {
+    print(e);
+  }
 
   final themeStrDark =
       await rootBundle.loadString('assets/appainter_theme_dark.json');
