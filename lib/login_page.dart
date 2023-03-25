@@ -13,8 +13,8 @@ class loginPage extends StatefulWidget {
 class _loginPage extends State<loginPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  dynamic _errorMessagesEmail = null;
-  dynamic _errorMessagesPasssword = null;
+  dynamic _errorMessagesEmail;
+  dynamic _errorMessagesPasssword;
 
   @override
   void dispose() {
@@ -223,7 +223,7 @@ class _loginPage extends State<loginPage> {
                                     transitionDuration: Duration.zero,
                                     reverseTransitionDuration: Duration.zero));
                           },
-                          color: Color.fromARGB(255, 212, 212, 212),
+                          color: const Color.fromARGB(255, 212, 212, 212),
                           elevation: 0,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12.0),
@@ -266,14 +266,14 @@ class _loginPage extends State<loginPage> {
                             });
                             setState(() {});
                           },
-                          color: Color.fromARGB(255, 212, 212, 212),
+                          color: const Color.fromARGB(255, 212, 212, 212),
                           elevation: 0,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12.0),
                               side: const BorderSide(
                                   color: Color(0xff9e9e9e), width: 1)),
                           padding: const EdgeInsets.all(16),
-                          textColor: Color.fromARGB(255, 0, 0, 0),
+                          textColor: const Color.fromARGB(255, 0, 0, 0),
                           height: 40,
                           minWidth: 140,
                           child: const Text(
