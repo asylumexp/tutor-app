@@ -2,15 +2,17 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
-import 'loginFunctions.dart';
+import 'login_functions.dart';
 import 'register_page.dart';
 
-class loginPage extends StatefulWidget {
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
   @override
-  _loginPage createState() => _loginPage();
+  State<LoginPage> createState() => _LoginPage();
 }
 
-class _loginPage extends State<loginPage> {
+class _LoginPage extends State<LoginPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   dynamic _errorMessagesEmail;
@@ -218,7 +220,7 @@ class _loginPage extends State<loginPage> {
                                     pageBuilder: (BuildContext context,
                                         Animation<double> animation1,
                                         Animation<double> animation2) {
-                                      return RegisterPage();
+                                      return const RegisterPage();
                                     },
                                     transitionDuration: Duration.zero,
                                     reverseTransitionDuration: Duration.zero));

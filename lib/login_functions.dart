@@ -6,13 +6,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 Future<dynamic> requestRegister(String user, String email, String pass) async {
   try {
-    final creds = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+    await FirebaseAuth.instance.createUserWithEmailAndPassword(
       email: email,
       password: pass,
     );
     FirebaseAuth.instance.authStateChanges().listen((User? user) {
       if (user != null) {
-        print(user.uid);
+        log(user.uid);
       }
     });
   } on FirebaseAuthException catch (e) {
@@ -50,7 +50,7 @@ void addStringToSF(String key, String value) async {
 
 void getValue(String key) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  print(prefs.get(key));
+  log(prefs.get(key).toString());
 }
 
 List<String> codeToUser(String code) {

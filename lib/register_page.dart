@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'loginFunctions.dart';
+import 'login_functions.dart';
 import 'login_page.dart';
 
 class RegisterPage extends StatefulWidget {
+  const RegisterPage({super.key});
+
   @override
-  _RegisterPage createState() => _RegisterPage();
+  State<RegisterPage> createState() => _RegisterPage();
 }
 
 class _RegisterPage extends State<RegisterPage> {
@@ -249,7 +251,7 @@ class _RegisterPage extends State<RegisterPage> {
                                   pageBuilder: (BuildContext context,
                                       Animation<double> animation1,
                                       Animation<double> animation2) {
-                                    return loginPage();
+                                    return const LoginPage();
                                   },
                                   transitionDuration: Duration.zero,
                                   reverseTransitionDuration: Duration.zero));

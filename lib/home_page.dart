@@ -1,8 +1,12 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
-  _HomePageState createState() => _HomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
@@ -21,7 +25,7 @@ class _HomePageState extends State<HomePage> {
               color: Colors.blue, borderRadius: BorderRadius.circular(10)),
           child: TextButton(
             onPressed: () {
-              print("test");
+              log("test");
             },
             child: const Text(
               'Welcome',

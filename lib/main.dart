@@ -17,7 +17,7 @@ void main() async {
       options: DefaultFirebaseOptions.currentPlatform,
     );
   } catch (e) {
-    print(e);
+    log(e.toString());
   }
 
   final themeStrDark =
@@ -46,14 +46,16 @@ class MyApp extends StatelessWidget {
       theme: themeLight,
       darkTheme: themeDark,
       themeMode: ThemeMode.system,
-      home: LoginDemo(),
+      home: const LoginDemo(),
     );
   }
 }
 
 class LoginDemo extends StatefulWidget {
+  const LoginDemo({super.key});
+
   @override
-  _LoginDemoState createState() => _LoginDemoState();
+  State<LoginDemo> createState() => _LoginDemoState();
 }
 
 // Define a custom Form widget.
@@ -85,7 +87,7 @@ class _LoginDemoState extends State<LoginDemo> {
                           pageBuilder: (BuildContext context,
                               Animation<double> animation1,
                               Animation<double> animation2) {
-                            return RegisterPage();
+                            return const RegisterPage();
                           },
                           transitionDuration: Duration.zero,
                           reverseTransitionDuration: Duration.zero));
@@ -114,7 +116,7 @@ class _LoginDemoState extends State<LoginDemo> {
                           pageBuilder: (BuildContext context,
                               Animation<double> animation1,
                               Animation<double> animation2) {
-                            return loginPage();
+                            return const LoginPage();
                           },
                           transitionDuration: Duration.zero,
                           reverseTransitionDuration: Duration.zero));
