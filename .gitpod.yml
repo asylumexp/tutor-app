@@ -12,13 +12,11 @@ github:
     addLabel: false
 tasks:
   - command: |
-      export PATH=/usr/lib/dart/bin:$FLUTTER_HOME/bin:$ANDROID_HOME/bin:$PATH
+      export PATH=/usr/lib/dart/bin:$FLUTTER_HOME/bin:$ANDROID_HOME/bin:$HOME/flutter/.pub-cache/bin:$PATH
       cd /workspace/tutor-app/flutter
       flutter pub get
-      cd ..
-      cd ./server
-      npm i
-      npm start
+      npm i -g firebase-tools
+      flutter pub global activate flutterfire_cli
 
 vscode:
   extensions:
