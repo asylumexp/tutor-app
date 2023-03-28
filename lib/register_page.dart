@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'login_functions.dart';
 import 'login_page.dart';
@@ -13,6 +15,8 @@ class _RegisterPage extends State<RegisterPage> {
   final userController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  dynamic _errorMessagesEmail;
+  dynamic _errorMessagesPassword;
 
   @override
   void dispose() {
@@ -134,34 +138,44 @@ class _RegisterPage extends State<RegisterPage> {
                       // color: Color(0xff000000),
                     ),
                     decoration: InputDecoration(
-                      disabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(4.0),
-                        borderSide: const BorderSide(
-                            color: Color(0xff9e9e9e), width: 1),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(4.0),
-                        borderSide: const BorderSide(
-                            color: Color(0xff9e9e9e), width: 1),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(4.0),
-                        borderSide: const BorderSide(
-                            color: Color(0xff9e9e9e), width: 1),
-                      ),
-                      labelText: "Email",
-                      labelStyle: const TextStyle(
-                        fontWeight: FontWeight.w400,
-                        fontStyle: FontStyle.normal,
-                        fontSize: 16,
-                        // color: Color(0xff9e9e9e),
-                      ),
-                      filled: true,
-                      fillColor: const Color(0x00ffffff),
-                      isDense: false,
-                      contentPadding: const EdgeInsets.symmetric(
-                          vertical: 8, horizontal: 12),
-                    ),
+                        disabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(4.0),
+                          borderSide: const BorderSide(
+                              color: Color.fromARGB(255, 255, 0, 0), width: 1),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(4.0),
+                          borderSide: const BorderSide(
+                              color: Color(0xff9e9e9e), width: 1),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(4.0),
+                          borderSide: const BorderSide(
+                              color: Color(0xff9e9e9e), width: 1),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(4.0),
+                          borderSide: const BorderSide(
+                              color: Color.fromARGB(123, 255, 0, 0), width: 1),
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(4.0),
+                          borderSide: const BorderSide(
+                              color: Color.fromARGB(123, 255, 0, 0), width: 1),
+                        ),
+                        labelText: "Email",
+                        labelStyle: const TextStyle(
+                          fontWeight: FontWeight.w400,
+                          fontStyle: FontStyle.normal,
+                          fontSize: 16,
+                          // color: Color(0xff9e9e9e),
+                        ),
+                        filled: true,
+                        fillColor: const Color(0x00ffffff),
+                        isDense: false,
+                        contentPadding: const EdgeInsets.symmetric(
+                            vertical: 8, horizontal: 12),
+                        errorText: _errorMessagesEmail),
                   ),
                 ),
                 Padding(
@@ -178,34 +192,44 @@ class _RegisterPage extends State<RegisterPage> {
                       // color: Color(0xff000000),
                     ),
                     decoration: InputDecoration(
-                      disabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(4.0),
-                        borderSide: const BorderSide(
-                            color: Color(0xff9e9e9e), width: 1),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(4.0),
-                        borderSide: const BorderSide(
-                            color: Color(0xff9e9e9e), width: 1),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(4.0),
-                        borderSide: const BorderSide(
-                            color: Color(0xff9e9e9e), width: 1),
-                      ),
-                      labelText: "Password",
-                      labelStyle: const TextStyle(
-                        fontWeight: FontWeight.w400,
-                        fontStyle: FontStyle.normal,
-                        fontSize: 16,
-                        // color: Color(0xff9e9e9e),
-                      ),
-                      filled: true,
-                      fillColor: const Color(0x00ffffff),
-                      isDense: false,
-                      contentPadding: const EdgeInsets.symmetric(
-                          vertical: 8, horizontal: 12),
-                    ),
+                        disabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(4.0),
+                          borderSide: const BorderSide(
+                              color: Color.fromARGB(255, 255, 0, 0), width: 1),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(4.0),
+                          borderSide: const BorderSide(
+                              color: Color(0xff9e9e9e), width: 1),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(4.0),
+                          borderSide: const BorderSide(
+                              color: Color(0xff9e9e9e), width: 1),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(4.0),
+                          borderSide: const BorderSide(
+                              color: Color.fromARGB(123, 255, 0, 0), width: 1),
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(4.0),
+                          borderSide: const BorderSide(
+                              color: Color.fromARGB(123, 255, 0, 0), width: 1),
+                        ),
+                        labelText: "Password",
+                        labelStyle: const TextStyle(
+                          fontWeight: FontWeight.w400,
+                          fontStyle: FontStyle.normal,
+                          fontSize: 16,
+                          // color: Color(0xff9e9e9e),
+                        ),
+                        filled: true,
+                        fillColor: const Color(0x00ffffff),
+                        isDense: false,
+                        contentPadding: const EdgeInsets.symmetric(
+                            vertical: 8, horizontal: 12),
+                        errorText: _errorMessagesPassword),
                   ),
                 ),
                 const Padding(padding: EdgeInsets.fromLTRB(0, 16, 0, 30)),
@@ -217,9 +241,22 @@ class _RegisterPage extends State<RegisterPage> {
                     Expanded(
                       flex: 1,
                       child: MaterialButton(
-                        onPressed: () {
-                          requestRegister(userController.text,
-                              emailController.text, passwordController.text);
+                        onPressed: () async {
+                          await requestRegister(userController.text,
+                                  emailController.text, passwordController.text)
+                              .then((value) {
+                            _errorMessagesEmail = null;
+                            _errorMessagesPassword = null;
+                            if (value[0] == "success") {
+                              log(value[1]);
+                            } else if (value[0] == "email") {
+                              _errorMessagesEmail ??= value[1];
+                            } else if (value[0] == "password") {
+                              _errorMessagesPassword ??= value[1];
+                            }
+                          });
+
+                          setState(() {});
                         },
                         color: const Color(0xff3a57e8),
                         elevation: 0,

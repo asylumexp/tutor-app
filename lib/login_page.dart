@@ -255,17 +255,18 @@ class _LoginPage extends State<LoginPage> {
                           onPressed: () async {
                             await requestLogin(emailController.text,
                                     passwordController.text)
-                                .then((value) {
+                                .then((value) async {
                               _errorMessagesEmail = null;
                               _errorMessagesPasssword = null;
                               if (value[0] == "success") {
-                                log(value[1]);
+                                await addStringToSF("userID", value[1]);
                               } else if (value[0] == "email") {
                                 _errorMessagesEmail ??= value[1];
                               } else if (value[0] == "password") {
                                 _errorMessagesPasssword ??= value[1];
                               }
                             });
+                            getValue("userId");
                             setState(() {});
                           },
                           color: const Color.fromARGB(255, 212, 212, 212),

@@ -4,23 +4,17 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-Future<dynamic> requestRegister(String user, String email, String pass) async {
+Future<List<dynamic>> requestRegister(
+    String user, String email, String pass) async {
   try {
-    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+    final credential =
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
       email: email,
       password: pass,
     );
-    FirebaseAuth.instance.authStateChanges().listen((User? user) {
-      if (user != null) {
-        log(user.uid);
-      }
-    });
+    return ["success", credential.user?.uid.toString()];
   } on FirebaseAuthException catch (e) {
-    log(e.code);
-    return e.code;
-  } catch (e) {
-    log(e.toString());
-    return e;
+    return codeToUser(e.code);
   }
 }
 
@@ -43,9 +37,14 @@ void parseLogin(http.Response response) {
   }
 }
 
-void addStringToSF(String key, String value) async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  prefs.setString(key, value);
+Future<Object> addStringToSF(String key, String value) async {
+  try {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString(key, value);
+    return Object;
+  } catch (e) {
+    return e;
+  }
 }
 
 void getValue(String key) async {
@@ -63,7 +62,12 @@ List<String> codeToUser(String code) {
       return ["email", "No user was found from this email."];
     case "wrong-password":
       return ["password", "This password is invalid."];
+    case "email-already-in-use":
+      return ["email", "This email is already in use."];
+    case "weak-password":
+      return ["password", "This password is not strong enough."];
     default:
+      print(code);
       return ["email", "An internal server error occurred."];
   }
 }
