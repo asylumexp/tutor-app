@@ -49,6 +49,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '631895189358',
     projectId: 'tutor-app-1a9ff',
     authDomain: 'tutor-app-1a9ff.firebaseapp.com',
+    databaseURL: 'https://tutor-app-1a9ff-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'tutor-app-1a9ff.appspot.com',
     measurementId: 'G-KL679TJB48',
   );
@@ -58,6 +59,7 @@ class DefaultFirebaseOptions {
     appId: '1:631895189358:android:5418ef9135c93a3c20037f',
     messagingSenderId: '631895189358',
     projectId: 'tutor-app-1a9ff',
+    databaseURL: 'https://tutor-app-1a9ff-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'tutor-app-1a9ff.appspot.com',
   );
 
@@ -66,6 +68,7 @@ class DefaultFirebaseOptions {
     appId: '1:631895189358:ios:046671b6540c715620037f',
     messagingSenderId: '631895189358',
     projectId: 'tutor-app-1a9ff',
+    databaseURL: 'https://tutor-app-1a9ff-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'tutor-app-1a9ff.appspot.com',
     iosClientId: '631895189358-1a97tmub0f999vifkkscehrs9bl7s1pc.apps.googleusercontent.com',
     iosBundleId: 'com.samh.tutorApp',
@@ -76,6 +79,7 @@ class DefaultFirebaseOptions {
     appId: '1:631895189358:ios:2dd4b637d0cc886320037f',
     messagingSenderId: '631895189358',
     projectId: 'tutor-app-1a9ff',
+    databaseURL: 'https://tutor-app-1a9ff-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'tutor-app-1a9ff.appspot.com',
     iosClientId: '631895189358-df16ara7mki0s9qqtdjo31ti1slrfghh.apps.googleusercontent.com',
     iosBundleId: 'com.samh.tutorAppMacOS',

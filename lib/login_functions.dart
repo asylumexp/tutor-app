@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 Future<List<dynamic>> requestRegister(
     String user, String email, String pass) async {
@@ -12,6 +13,10 @@ Future<List<dynamic>> requestRegister(
       email: email,
       password: pass,
     );
+    String? uid = credential.user?.uid.toString();
+
+    DatabaseReference ref = FirebaseDatabase.instance.ref("users/$uid");
+    await ref.set({"username": user});
     return ["success", credential.user?.uid.toString()];
   } on FirebaseAuthException catch (e) {
     return codeToUser(e.code);

@@ -4,7 +4,7 @@
 
 ### Prereqs
 
-You need [Firebase](https://firebase.google.com/) and [Flutter](https://flutter.dev)
+You need [Firebase](https://firebase.google.com/docs/cli) and [Flutter](https://docs.flutter.dev/get-started/install)
 
 ### Currently broken on:
 
