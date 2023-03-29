@@ -17,6 +17,7 @@ void main() async {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
+    // ignore: unused_local_variable
     FirebaseDatabase database = FirebaseDatabase.instance;
   } catch (e) {
     log(e.toString());

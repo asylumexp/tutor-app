@@ -300,26 +300,26 @@ packages:
     dependency: transitive
     description:
       name: json_class
-      sha256: "8b29217a33b1e6a46eaf471f47f1bd4bbc6f56a306039d2e7509bb93f4cc57c5"
+      sha256: "71bacbe9465d23129279dc2c59a46d2df8c94ad959666f842b38e99fafe35662"
       url: "https://pub.dev"
     source: hosted
-    version: "2.2.0"
+    version: "2.2.1+1"
   json_schema2:
     dependency: transitive
     description:
       name: json_schema2
-      sha256: "0ae8dbb0803ad85e994314ec1f4e5465766f4b522c16e1e542315c7e50cbd6db"
+      sha256: "2c9e030e098520852fceb1d2a96f5d64268fb6395074c754f786a83831d627f5"
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.3+6"
+    version: "2.0.3+7"
   json_theme:
     dependency: "direct main"
     description:
       name: json_theme
-      sha256: f734b2cd391a505fe9391fa97cdacf06026b7e4a1ecf386654a0b4e5f1644157
+      sha256: "954ef01b73f4f3f8081f885812b360095919b459e6d07853a9b21b1fc9e87301"
       url: "https://pub.dev"
     source: hosted
-    version: "5.0.1+2"
+    version: "5.0.2+2"
   lints:
     dependency: transitive
     description:
@@ -420,10 +420,10 @@ packages:
     dependency: transitive
     description:
       name: pointycastle
-      sha256: ae73e842cdd27a3467a71d70cefd9b198538aab4fc7dde1d0e8c78c96225abf0
+      sha256: c3120a968135aead39699267f4c74bc9a08e4e909e86bc1b0af5bfd78691123c
       url: "https://pub.dev"
     source: hosted
-    version: "3.7.1"
+    version: "3.7.2"
   process:
     dependency: transitive
     description:
@@ -444,10 +444,10 @@ packages:
     dependency: transitive
     description:
       name: rest_client
-      sha256: "7e5174682aa297409b19bf09061d11306be8ee6b69d96ca5bb5f514a043bd088"
+      sha256: ccf0bc0c1145ceb94916a58095bce8f26030653038edd5b4aa995117251ef41f
       url: "https://pub.dev"
     source: hosted
-    version: "2.2.1+6"
+    version: "2.2.1+7"
   shared_preferences:
     dependency: "direct main"
     description:
@@ -484,10 +484,10 @@ packages:
     dependency: transitive
     description:
       name: shared_preferences_platform_interface
-      sha256: "824bfd02713e37603b2bdade0842e47d56e7db32b1dcdd1cae533fb88e2913fc"
+      sha256: fb5cf25c0235df2d0640ac1b1174f6466bd311f621574997ac59018a6664548d
       url: "https://pub.dev"
     source: hosted
-    version: "2.1.1"
+    version: "2.2.0"
   shared_preferences_web:
     dependency: transitive
     description:
@@ -625,10 +625,10 @@ packages:
     dependency: transitive
     description:
       name: yaon
-      sha256: "2fd803f305f6afdd9714c28903c93d724006179ce2503704f42498d2f93d235a"
+      sha256: "1b0946e7ff0111e10a75ed47c4bdffc56487fd89a870e83786383c7a0bc402b8"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.2+1"
+    version: "1.0.2+2"
 sdks:
   dart: ">=2.19.3 <3.0.0"
   flutter: ">=3.0.0"

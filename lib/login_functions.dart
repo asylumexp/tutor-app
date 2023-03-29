@@ -27,6 +27,14 @@ Future<List<dynamic>> requestLogin(String email, String pass) async {
   try {
     final credential = await FirebaseAuth.instance
         .signInWithEmailAndPassword(email: email, password: pass);
+    String? uid = credential.user?.uid.toString();
+
+    DatabaseReference starCountRef =
+        FirebaseDatabase.instance.ref('users/$uid/');
+    starCountRef.onValue.listen((DatabaseEvent event) {
+      final data = event.snapshot.value;
+      print(data);
+    });
     return ["success", credential.user?.uid.toString()];
   } on FirebaseAuthException catch (e) {
     final code = codeToUser(e.code);
