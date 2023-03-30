@@ -258,8 +258,11 @@ class _LoginPage extends State<LoginPage> {
                                 .then((value) async {
                               _errorMessagesEmail = null;
                               _errorMessagesPasssword = null;
+                              log(value.toString());
+                              log(value[0].toString());
                               if (value[0] == "success") {
-                                await addStringToSF("userID", value[1]);
+                                // await addStringToSF("userID", value[1]);
+                                log(value[1]);
                               } else if (value[0] == "email") {
                                 _errorMessagesEmail ??= value[1];
                               } else if (value[0] == "password") {
