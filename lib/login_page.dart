@@ -259,13 +259,8 @@ class _LoginPage extends State<LoginPage> {
                                 .then((value) async {
                               _errorMessagesEmail = null;
                               _errorMessagesPasssword = null;
-                              log(value.toString());
-                              log(value[1].toString());
                               if (value[0] == "success") {
-                                log(value[1][1]);
-                                Map<String, dynamic> successReturn =
-                                    jsonDecode("$value[1][1]");
-                                log(successReturn['username']);
+                                log(value[1][1]['username']);
                               } else if (value[0] == "email") {
                                 log("email error");
                                 _errorMessagesEmail ??= value[1];
