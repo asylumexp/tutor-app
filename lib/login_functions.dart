@@ -6,7 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 
 Future<List<dynamic>> requestRegister(
-    String user, String email, String pass) async {
+    String user, String email, String pass, bool tutor) async {
   try {
     final credential =
         await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -16,7 +16,7 @@ Future<List<dynamic>> requestRegister(
     String? uid = credential.user?.uid.toString();
 
     DatabaseReference ref = FirebaseDatabase.instance.ref("users/$uid");
-    await ref.set({"username": user});
+    await ref.set({"username": user, "tutor": tutor.toString()});
     return ["success", credential.user?.uid.toString()];
   } on FirebaseAuthException catch (e) {
     return codeToUser(e.code);
@@ -28,14 +28,12 @@ Future<List<dynamic>> requestLogin(String email, String pass) async {
     final credential = await FirebaseAuth.instance
         .signInWithEmailAndPassword(email: email, password: pass);
     String? uid = credential.user?.uid.toString();
-    Object? username;
+
     DatabaseReference ref = FirebaseDatabase.instance.ref('users/$uid/');
-    ref.onValue.listen((DatabaseEvent event) {
-      username = event.snapshot.value;
-    });
+    var snapshot = await ref.once();
     return [
       "success",
-      [credential.user?.uid.toString(), username]
+      [credential.user?.uid.toString(), snapshot.snapshot.value.toString()]
     ];
   } on FirebaseAuthException catch (e) {
     final code = codeToUser(e.code);

@@ -15,6 +15,7 @@ class _RegisterPage extends State<RegisterPage> {
   final userController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  bool checkedValue = false;
   dynamic _errorMessagesEmail;
   dynamic _errorMessagesPassword;
 
@@ -232,6 +233,17 @@ class _RegisterPage extends State<RegisterPage> {
                         errorText: _errorMessagesPassword),
                   ),
                 ),
+                CheckboxListTile(
+                  title: const Text("Tutor?"),
+                  value: checkedValue,
+                  onChanged: (newValue) {
+                    setState(() {
+                      checkedValue = newValue!;
+                    });
+                  },
+                  controlAffinity:
+                      ListTileControlAffinity.leading, //  <-- leading Checkbox
+                ),
                 const Padding(padding: EdgeInsets.fromLTRB(0, 16, 0, 30)),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -242,8 +254,11 @@ class _RegisterPage extends State<RegisterPage> {
                       flex: 1,
                       child: MaterialButton(
                         onPressed: () async {
-                          await requestRegister(userController.text,
-                                  emailController.text, passwordController.text)
+                          await requestRegister(
+                                  userController.text,
+                                  emailController.text,
+                                  passwordController.text,
+                                  checkedValue)
                               .then((value) {
                             _errorMessagesEmail = null;
                             _errorMessagesPassword = null;

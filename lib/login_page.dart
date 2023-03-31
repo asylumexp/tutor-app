@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
@@ -259,17 +260,21 @@ class _LoginPage extends State<LoginPage> {
                               _errorMessagesEmail = null;
                               _errorMessagesPasssword = null;
                               log(value.toString());
-                              log(value[0].toString());
+                              log(value[1].toString());
                               if (value[0] == "success") {
-                                // await addStringToSF("userID", value[1]);
-                                log(value[1]);
+                                log(value[1][1]);
+                                Map<String, dynamic> successReturn =
+                                    jsonDecode("$value[1][1]");
+                                log(successReturn['username']);
                               } else if (value[0] == "email") {
+                                log("email error");
                                 _errorMessagesEmail ??= value[1];
                               } else if (value[0] == "password") {
+                                log("password error");
                                 _errorMessagesPasssword ??= value[1];
                               }
                             });
-                            getValue("userID");
+                            // getValue("use?rID");
                             setState(() {});
                           },
                           color: const Color.fromARGB(255, 212, 212, 212),
