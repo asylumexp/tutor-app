@@ -31,10 +31,9 @@ Future<List<dynamic>> requestLogin(String email, String pass) async {
 
     DatabaseReference ref = FirebaseDatabase.instance.ref('users/$uid/');
     var snapshot = await ref.once();
-    Map<dynamic, dynamic> map = snapshot.snapshot.value as Map;
     return [
       "success",
-      [credential.user?.uid.toString(), map]
+      [credential.user?.uid.toString(), snapshot.snapshot.value as Map]
     ];
   } on FirebaseAuthException catch (e) {
     final code = codeToUser(e.code);
