@@ -11,7 +11,7 @@ You need [Firebase](https://firebase.google.com/docs/cli) and [Flutter](https://
 Windows, Linux, (Android untested, most likely broken)
 
 ### Steps to run:
-
-1. After making sure you have Firebase, run `flutter pub global activate flutterfire_cli` in any terminal window.
-2. Then open tutor-app in any cmd window and run `flutter pub get`.
-3. Now you're ready to run. (You can run it as a webserver using start.sh).
+1. Replace API keys with valid ones
+2. After making sure you have Firebase, run `flutter pub global activate flutterfire_cli` in any terminal window.
+3. Then open tutor-app in any cmd window and run `flutter pub get`.
+4. Now you're ready to run. (You can run it as a webserver using start.sh).
