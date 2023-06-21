@@ -1,27 +1,32 @@
-// import 'dart:developer';
-// import 'package:http/http.dart' as http;
-// import 'dart:convert';
-// import 'package:shared_preferences/shared_preferences.dart';
-// import 'package:firebase_auth/firebase_auth.dart';
-// import 'package:firebase_database/firebase_database.dart';
+import 'dart:developer';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-// Future<List<dynamic>> requestRegister(
-//     String user, String email, String pass, bool tutor) async {
-//   try {
-//     final credential =
-//         await FirebaseAuth.instance.createUserWithEmailAndPassword(
-//       email: email,
-//       password: pass,
-//     );
-//     String? uid = credential.user?.uid.toString();
+final supabase = Supabase.instance.client;
 
-//     DatabaseReference ref = FirebaseDatabase.instance.ref("users/$uid");
-//     await ref.set({"username": user, "tutor": tutor.toString()});
-//     return ["success", credential.user?.uid.toString()];
-//   } on FirebaseAuthException catch (e) {
-//     return codeToUser(e.code);
-//   }
-// }
+Future<bool> requestRegister(
+    String user, String email, String pass, bool tutor) async {
+  try {
+    final response = await supabase.auth.signInWithOAuth(
+      Provider.google,
+    );
+    return false;
+    // final credential =
+    //     await FirebaseAuth.instance.createUserWithEmailAndPassword(
+    //   email: email,
+    //   password: pass,
+    // );
+    // String? uid = credential.user?.uid.toString();
+
+    // DatabaseReference ref = FirebaseDatabase.instance.ref("users/$uid");
+    // await ref.set({"username": user, "tutor": tutor.toString()});
+    // return ["success", credential.user?.uid.toString()];
+  } on Exception {
+    return false;
+  }
+}
 
 // Future<List<dynamic>> requestLogin(String email, String pass) async {
 //   try {

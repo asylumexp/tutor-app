@@ -255,11 +255,11 @@ class _RegisterPage extends State<RegisterPage> {
                       child: MaterialButton(
                         onPressed: () async {
                           print("asd_regisiter");
-                          // await requestRegister(
-                          //         userController.text,
-                          //         emailController.text,
-                          //         passwordController.text,
-                          //         checkedValue)
+                          await requestRegister(
+                              userController.text,
+                              emailController.text,
+                              passwordController.text,
+                              checkedValue);
                           //     .then((value) {
                           //   _errorMessagesEmail = null;
                           //   _errorMessagesPassword = null;
