@@ -6,9 +6,16 @@ import 'register_page.dart';
 import 'package:json_theme/json_theme.dart';
 import 'package:flutter/services.dart'; // For rootBundle
 import 'dart:convert';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await Supabase.initialize(
+    url: 'https://vuftofhyjjdqswtnuohg.supabase.co',
+    anonKey:
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ1ZnRvZmh5ampkcXN3dG51b2hnIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODczMDY1NTMsImV4cCI6MjAwMjg4MjU1M30.AIT7TFp6BZsawX-6wwyUtsY1kEG2ZYlvaWJ_iKR85mQ',
+  );
 
   final themeStrDark =
       await rootBundle.loadString('assets/appainter_theme_dark.json');
