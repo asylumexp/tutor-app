@@ -38,9 +38,8 @@ dependencies:
   shared_preferences: ^2.0.18
   json_theme: ^5.0.0+5
   flutter_signin_button: ^2.0.0
-  firebase_core: ^2.8.0
-  firebase_auth: ^4.3.0
-  firebase_database: ^10.0.16
+  supabase_flutter: ^1.10.4
+
 dependency_overrides:
   intl: ^0.18.0
 

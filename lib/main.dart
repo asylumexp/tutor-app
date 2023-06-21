@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -7,21 +6,9 @@ import 'register_page.dart';
 import 'package:json_theme/json_theme.dart';
 import 'package:flutter/services.dart'; // For rootBundle
 import 'dart:convert';
-import 'firebase_options.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_database/firebase_database.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  try {
-    await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
-    );
-    // ignore: unused_local_variable
-    FirebaseDatabase database = FirebaseDatabase.instance;
-  } catch (e) {
-    log(e.toString());
-  }
 
   final themeStrDark =
       await rootBundle.loadString('assets/appainter_theme_dark.json');
