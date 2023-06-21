@@ -254,22 +254,23 @@ class _RegisterPage extends State<RegisterPage> {
                       flex: 1,
                       child: MaterialButton(
                         onPressed: () async {
-                          await requestRegister(
-                                  userController.text,
-                                  emailController.text,
-                                  passwordController.text,
-                                  checkedValue)
-                              .then((value) {
-                            _errorMessagesEmail = null;
-                            _errorMessagesPassword = null;
-                            if (value[0] == "success") {
-                              log(value[1]);
-                            } else if (value[0] == "email") {
-                              _errorMessagesEmail ??= value[1];
-                            } else if (value[0] == "password") {
-                              _errorMessagesPassword ??= value[1];
-                            }
-                          });
+                          print("asd_regisiter");
+                          // await requestRegister(
+                          //         userController.text,
+                          //         emailController.text,
+                          //         passwordController.text,
+                          //         checkedValue)
+                          //     .then((value) {
+                          //   _errorMessagesEmail = null;
+                          //   _errorMessagesPassword = null;
+                          //   if (value[0] == "success") {
+                          //     log(value[1]);
+                          //   } else if (value[0] == "email") {
+                          //     _errorMessagesEmail ??= value[1];
+                          //   } else if (value[0] == "password") {
+                          //     _errorMessagesPassword ??= value[1];
+                          //   }
+                          // });
 
                           setState(() {});
                         },

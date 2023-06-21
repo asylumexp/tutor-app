@@ -253,21 +253,21 @@ class _LoginPage extends State<LoginPage> {
                         flex: 1,
                         child: MaterialButton(
                           onPressed: () async {
-                            await requestLogin(emailController.text,
-                                    passwordController.text)
-                                .then((value) async {
-                              _errorMessagesEmail = null;
-                              _errorMessagesPasssword = null;
-                              if (value[0] == "success") {
-                                log(value[1][1]['username']);
-                              } else if (value[0] == "email") {
-                                log("email error");
-                                _errorMessagesEmail ??= value[1];
-                              } else if (value[0] == "password") {
-                                log("password error");
-                                _errorMessagesPasssword ??= value[1];
-                              }
-                            });
+                            print("asd");
+                            // await requestLogin(emailController.text,
+                            //         passwordController.text)
+                            //     .then((value) async {
+                            //   _errorMessagesEmail = null;
+                            //   _errorMessagesPasssword = null;
+                            //   if (value[0] == "success") {
+                            //     log(value[1][1]['username']);
+                            //   } else if (value[0] == "email") {
+                            //     log("email error");
+                            //     _errorMessagesEmail ??= value[1];
+                            //   } else if (value[0] == "password") {
+                            //     log("password error");
+                            //     _errorMessagesPasssword ??= value[1];
+
                             // getValue("use?rID");
                             setState(() {});
                           },
