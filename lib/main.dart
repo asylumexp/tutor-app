@@ -2,14 +2,18 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:tutor_app/login_page.dart';
-import 'register_page.dart';
 import 'package:json_theme/json_theme.dart';
 import 'package:flutter/services.dart'; // For rootBundle
 import 'dart:convert';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:uni_links_desktop/uni_links_desktop.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  if (Platform.isWindows) {
+    registerProtocol('tutorapp');
+  }
 
   await Supabase.initialize(
     url: 'https://vuftofhyjjdqswtnuohg.supabase.co',
@@ -70,30 +74,6 @@ class _LoginDemoState extends State<LoginDemo> {
             const Padding(
               padding: EdgeInsets.only(top: 60.0),
               child: Center(),
-            ),
-            Container(
-              height: 50,
-              width: 250,
-              decoration: BoxDecoration(
-                  color: Colors.blue, borderRadius: BorderRadius.circular(20)),
-              child: TextButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      PageRouteBuilder(
-                          pageBuilder: (BuildContext context,
-                              Animation<double> animation1,
-                              Animation<double> animation2) {
-                            return const RegisterPage();
-                          },
-                          transitionDuration: Duration.zero,
-                          reverseTransitionDuration: Duration.zero));
-                },
-                child: const Text(
-                  'go to reggisters',
-                  style: TextStyle(color: Colors.white, fontSize: 25),
-                ),
-              ),
             ),
             Padding(
                 //padding: const EdgeInsets.only(left:15.0,right: 15.0,top:0,bottom: 0),
