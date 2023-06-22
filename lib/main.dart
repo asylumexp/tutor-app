@@ -7,10 +7,12 @@ import 'package:flutter/services.dart'; // For rootBundle
 import 'dart:convert';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:uni_links_desktop/uni_links_desktop.dart';
+import 'styling.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  // This registers the tutorapp:// url scheme
   if (Platform.isWindows) {
     registerProtocol('tutorapp');
   }
@@ -80,12 +82,8 @@ class _LoginDemoState extends State<LoginDemo> {
                 padding: EdgeInsets.symmetric(
                     horizontal: MediaQuery.of(context).size.width * 0.2,
                     vertical: 20)),
-            Container(
-              height: 50,
-              width: 250,
-              decoration: BoxDecoration(
-                  color: Colors.blue, borderRadius: BorderRadius.circular(20)),
-              child: TextButton(
+            createButton(
+                label: 'go to logogogin',
                 onPressed: () {
                   Navigator.push(
                       context,
@@ -97,44 +95,18 @@ class _LoginDemoState extends State<LoginDemo> {
                           },
                           transitionDuration: Duration.zero,
                           reverseTransitionDuration: Duration.zero));
-                },
-                child: const Text(
-                  'go to logogogin',
-                  style: TextStyle(color: Colors.white, fontSize: 25),
-                ),
-              ),
-            ),
-            Container(
-              height: 50,
-              width: 250,
-              decoration: BoxDecoration(
-                  color: Colors.blue, borderRadius: BorderRadius.circular(20)),
-              child: TextButton(
+                }),
+            createButton(
+                label: 'Sign out',
                 onPressed: () {
                   final supabase = Supabase.instance.client;
                   supabase.auth.signOut();
-                },
-                child: const Text(
-                  'Sign out',
-                  style: TextStyle(color: Colors.white, fontSize: 25),
-                ),
-              ),
-            ),
-            Container(
-              height: 50,
-              width: 250,
-              decoration: BoxDecoration(
-                  color: Colors.blue, borderRadius: BorderRadius.circular(20)),
-              child: TextButton(
+                }),
+            createButton(
+                label: 'quit',
                 onPressed: () {
                   exit(0);
-                },
-                child: const Text(
-                  'quit',
-                  style: TextStyle(color: Colors.white, fontSize: 25),
-                ),
-              ),
-            )
+                })
           ],
         ),
       ),
