@@ -15,9 +15,11 @@ class _LoginPage extends State<LoginPage> {
     return Scaffold(
       // backgroundColor: const Color(0xffffffff),
       body: Align(
+        // Centers content
         alignment: Alignment.center,
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 16),
+          // Scrollable child widget
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -35,6 +37,7 @@ class _LoginPage extends State<LoginPage> {
                     fit: BoxFit.cover, //change image fill type
                   ),
                 ),
+                // * Title text
                 const Padding(
                   padding: EdgeInsets.fromLTRB(0, 8, 0, 30),
                   child: Text(
@@ -49,6 +52,7 @@ class _LoginPage extends State<LoginPage> {
                     ),
                   ),
                 ),
+                // * Login title text
                 const Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
@@ -63,6 +67,7 @@ class _LoginPage extends State<LoginPage> {
                     ),
                   ),
                 ),
+                // * Padding which contains the sign in button
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(vertical: 16, horizontal: 0),

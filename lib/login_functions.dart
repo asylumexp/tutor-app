@@ -7,6 +7,7 @@ final supabase = Supabase.instance.client;
 Future<String> login() async {
   await supabase.auth.signInWithOAuth(
     Provider.google,
+    // Checks that this isnt web, if it isnt them redirect to tutorapp URL
     redirectTo: kIsWeb ? null : 'tutorapp://localhost/',
   );
 
