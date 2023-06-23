@@ -84,7 +84,7 @@ class _LoginDemoState extends State<LoginDemo> {
                     vertical: 20)),
             createButton(
                 label: 'go to logogogin',
-                onPressed: () {
+                action: () {
                   Navigator.push(
                       context,
                       PageRouteBuilder(
@@ -98,13 +98,13 @@ class _LoginDemoState extends State<LoginDemo> {
                 }),
             createButton(
                 label: 'Sign out',
-                onPressed: () {
+                action: () {
                   final supabase = Supabase.instance.client;
                   supabase.auth.signOut();
                 }),
             createButton(
                 label: 'quit',
-                onPressed: () {
+                action: () {
                   exit(0);
                 })
           ],

@@ -4,7 +4,10 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 final supabase = Supabase.instance.client;
 
-Future<String> login() async {
+/// Supabase google login.
+///
+/// Signs in with google oauth, then checks if the user is new.
+Future<void> login() async {
   if (supabase.auth.currentUser == null) {
     await supabase.auth.signInWithOAuth(
       Provider.google,
@@ -34,6 +37,4 @@ Future<String> login() async {
       });
     }
   });
-
-  return '';
 }
