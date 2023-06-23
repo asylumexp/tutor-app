@@ -7,12 +7,14 @@
 You need [Flutter](https://docs.flutter.dev/get-started/install)
 
 ### Currently broken on:
+
 - Linux - **Does not support** deeplinks, and most likely never will.
-- Android - untested - deeplink support not added yet.
-- iOS - untested - deeplink support not added yet.
+- Android - untested
+- iOS - untested
 - macOS - untested
 
 ### Steps to run:
+
 1. Clone the repo
 2. Open the directory in terminal and run `flutter pub get`.
 3. Run `./start.sh` to start a webserver.

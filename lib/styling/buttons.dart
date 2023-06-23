@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 /// onPressed action, [height] and [width] being the dimensions of the box,
 /// [decoration] is the styling for the container, and [child] is the child
 /// of the container. Returns the newly created button.
-Widget createButton(
+Container createButton(
     {required String label,
     required Function action,
     double? height,

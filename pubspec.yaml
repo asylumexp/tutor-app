@@ -35,11 +35,15 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   http: ^1.0.0
-  shared_preferences: ^2.0.18
   json_theme: ^6.0.1+1
   flutter_signin_button: ^2.0.0
   supabase_flutter: ^1.10.4
   uni_links_desktop: ^0.1.6
+  uni_links: ^0.5.1
+  dropdown_button2: ^2.3.1
+
+dependency_overrides:
+  file: ^7.0.0
 
 dev_dependencies:
   flutter_test:

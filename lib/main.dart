@@ -1,13 +1,14 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:tutor_app/login_page.dart';
+import 'package:tutor_app/views/login_page.dart';
 import 'package:json_theme/json_theme.dart';
 import 'package:flutter/services.dart'; // For rootBundle
 import 'dart:convert';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:uni_links_desktop/uni_links_desktop.dart';
-import 'styling.dart';
+import 'styling/buttons.dart';
+import 'views/register_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -106,6 +107,20 @@ class _LoginDemoState extends State<LoginDemo> {
                 label: 'quit',
                 action: () {
                   exit(0);
+                }),
+            createButton(
+                label: 'go to create user',
+                action: () {
+                  Navigator.push(
+                      context,
+                      PageRouteBuilder(
+                          pageBuilder: (BuildContext context,
+                              Animation<double> animation1,
+                              Animation<double> animation2) {
+                            return const RegisterPage();
+                          },
+                          transitionDuration: Duration.zero,
+                          reverseTransitionDuration: Duration.zero));
                 })
           ],
         ),

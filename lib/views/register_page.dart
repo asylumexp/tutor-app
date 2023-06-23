@@ -1,15 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_signin_button/flutter_signin_button.dart';
-import 'login_functions.dart';
+import '../styling/text_edits.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPage();
+  State<RegisterPage> createState() => _RegisterPage();
 }
 
-class _LoginPage extends State<LoginPage> {
+class _RegisterPage extends State<RegisterPage> {
+  final nameController = TextEditingController();
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    nameController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,17 +34,6 @@ class _LoginPage extends State<LoginPage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisSize: MainAxisSize.max,
               children: [
-                ///***If you have exported images you must have to copy those images in assets/images directory.
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(50.0),
-                  //make border radius more than 50% of square height & width
-                  child: Image.asset(
-                    "assets/icon.png",
-                    height: 90.0,
-                    width: 90.0,
-                    fit: BoxFit.cover, //change image fill type
-                  ),
-                ),
                 // * Title text
                 const Padding(
                   padding: EdgeInsets.fromLTRB(0, 8, 0, 30),
@@ -56,7 +53,7 @@ class _LoginPage extends State<LoginPage> {
                 const Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    "Sign In",
+                    "Register",
                     textAlign: TextAlign.start,
                     overflow: TextOverflow.clip,
                     style: TextStyle(
@@ -67,17 +64,7 @@ class _LoginPage extends State<LoginPage> {
                     ),
                   ),
                 ),
-                // * Padding which contains the sign in button
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 16, horizontal: 0),
-                  child: SignInButton(
-                    Buttons.Google,
-                    onPressed: () async {
-                      await login();
-                    },
-                  ),
-                ),
+                createTextField(controller: nameController, labelText: "Name")
               ],
             ),
           ),
@@ -86,3 +73,12 @@ class _LoginPage extends State<LoginPage> {
     );
   }
 }
+
+// await supabase.from("tutor").insert({
+//             "first_name": "Test",
+//             "last_name": "test",
+//             "email": supabase.auth.currentUser!.email,
+//             "subjects": ["None"],
+//             "students": ["None"],
+//             "userid": supabase.auth.currentUser!.id
+//           });
