@@ -66,13 +66,16 @@ Widget multiSelect(
     selectedItemBuilder: (context) {
       return items.map(
         (item) {
-          return Text(
-            selectedItems.join(', '),
-            style: const TextStyle(
-              fontSize: 14,
-              overflow: TextOverflow.ellipsis,
+          return Container(
+            alignment: AlignmentDirectional.center,
+            child: Text(
+              selectedItems.join(', '),
+              style: const TextStyle(
+                fontSize: 14,
+                overflow: TextOverflow.ellipsis,
+              ),
+              maxLines: 1,
             ),
-            maxLines: 1,
           );
         },
       ).toList();
