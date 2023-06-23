@@ -44,3 +44,8 @@ Future<void> login(BuildContext buildContext) async {
     }
   });
 }
+
+bool isUserSignedIn() {
+  final session = supabase.auth.currentSession;
+  return session != null;
+}

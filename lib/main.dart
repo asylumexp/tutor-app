@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:tutor_app/logic/login_functions.dart';
 import 'package:tutor_app/views/login_page.dart';
 import 'package:json_theme/json_theme.dart';
 import 'package:flutter/services.dart'; // For rootBundle
@@ -67,6 +68,7 @@ class LoginDemo extends StatefulWidget {
 class _LoginDemoState extends State<LoginDemo> {
   @override
   Widget build(BuildContext context) {
+    final bool session = isUserSignedIn();
     return Scaffold(
       appBar: AppBar(
         title: const Text("Login Page"),
@@ -102,6 +104,7 @@ class _LoginDemoState extends State<LoginDemo> {
                 action: () {
                   final supabase = Supabase.instance.client;
                   supabase.auth.signOut();
+                  setState(() {});
                 }),
             createButton(
                 label: 'quit',
@@ -121,7 +124,8 @@ class _LoginDemoState extends State<LoginDemo> {
                           },
                           transitionDuration: Duration.zero,
                           reverseTransitionDuration: Duration.zero));
-                })
+                }),
+            Text("Signed in: $session")
           ],
         ),
       ),

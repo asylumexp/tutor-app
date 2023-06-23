@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tutor_app/styling/dropdown.dart';
 import '../styling/text_edits.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -10,7 +11,8 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPage extends State<RegisterPage> {
   final nameController = TextEditingController();
-
+  final List<String> items = ['Item1', "Item 2"];
+  List<String> selectedItems = [];
   @override
   void dispose() {
     // Clean up the controller when the widget is disposed.
@@ -64,7 +66,20 @@ class _RegisterPage extends State<RegisterPage> {
                     ),
                   ),
                 ),
-                createTextField(controller: nameController, labelText: "Name")
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 8, 0, 30),
+                  child: createTextField(
+                      controller: nameController, labelText: "Name"),
+                ),
+                Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 8, 0, 30),
+                    child: multiSelect(
+                        context: context,
+                        items: items,
+                        selectedItems: selectedItems,
+                        onStateChanged: () {
+                          setState(() {});
+                        })),
               ],
             ),
           ),
