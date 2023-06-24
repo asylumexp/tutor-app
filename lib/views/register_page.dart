@@ -11,7 +11,7 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPage extends State<RegisterPage> {
   final nameController = TextEditingController();
-  final List<String> items = ['Item1', "Item 2"];
+  final List<String> items = ['Math', "English", "Chemistry", "Physics", "SOR"];
   List<String> selectedItems = [];
   @override
   void dispose() {
@@ -27,61 +27,62 @@ class _RegisterPage extends State<RegisterPage> {
       body: Align(
         // Centers content
         alignment: Alignment.center,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 16),
-          // Scrollable child widget
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                // * Title text
-                const Padding(
-                  padding: EdgeInsets.fromLTRB(0, 8, 0, 30),
-                  child: Text(
-                    "ToDo",
-                    textAlign: TextAlign.start,
-                    overflow: TextOverflow.clip,
-                    style: TextStyle(
-                      fontWeight: FontWeight.w700,
-                      fontStyle: FontStyle.normal,
-                      fontSize: 20,
-                      color: Color.fromARGB(255, 128, 149, 253),
-                    ),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              // * Title text
+              const Padding(
+                padding: EdgeInsets.fromLTRB(0, 8, 0, 30),
+                child: Text(
+                  "ToDo",
+                  textAlign: TextAlign.start,
+                  overflow: TextOverflow.clip,
+                  style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontStyle: FontStyle.normal,
+                    fontSize: 20,
+                    color: Color.fromARGB(255, 128, 149, 253),
                   ),
                 ),
-                // * Login title text
-                const Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    "Register",
-                    textAlign: TextAlign.start,
-                    overflow: TextOverflow.clip,
-                    style: TextStyle(
-                      fontWeight: FontWeight.w700,
-                      fontStyle: FontStyle.normal,
-                      fontSize: 24,
-                      // color: Color(0xff000000),
-                    ),
+              ),
+              // * Login title text
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "Register",
+                  textAlign: TextAlign.start,
+                  overflow: TextOverflow.clip,
+                  style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontStyle: FontStyle.normal,
+                    fontSize: 24,
+                    // color: Color(0xff000000),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 8, 0, 30),
-                  child: createTextField(
-                      controller: nameController, labelText: "Name"),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 8, 0, 12),
+                child: createTextField(
+                    controller: nameController, labelText: "Name"),
+              ),
+              Center(
+                child: Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                  child: multiSelect(
+                    context: context,
+                    items: items,
+                    selectedItems: selectedItems,
+                    onStateChanged: () {
+                      setState(() {});
+                    },
+                  ),
                 ),
-                Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 8, 0, 30),
-                    child: multiSelect(
-                        context: context,
-                        items: items,
-                        selectedItems: selectedItems,
-                        onStateChanged: () {
-                          setState(() {});
-                        })),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
