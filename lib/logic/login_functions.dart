@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,7 @@ Future<void> login(BuildContext buildContext) async {
     final AuthChangeEvent event = data.event;
     if (event == AuthChangeEvent.signedIn) {
       await supabase
-          .from("tutor")
+          .from("users")
           .select()
           .eq("userid", supabase.auth.currentUser!.id)
           .then((res) async {
@@ -48,4 +49,18 @@ Future<void> login(BuildContext buildContext) async {
 bool isUserSignedIn() {
   final session = supabase.auth.currentSession;
   return session != null;
+}
+
+Future<void> register(
+    {required List<String> subjects,
+    required String name,
+    required bool tutor}) async {
+  await supabase.from("users").insert({
+    "name": name,
+    "email": supabase.auth.currentUser!.email,
+    "subjects": subjects,
+    "students": ["None"],
+    "userid": supabase.auth.currentUser!.id,
+    "tutor": tutor
+  });
 }

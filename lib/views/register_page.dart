@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tutor_app/logic/login_functions.dart';
+import 'package:tutor_app/styling/buttons.dart';
 import 'package:tutor_app/styling/dropdown.dart';
 import '../styling/text_edits.dart';
 
@@ -13,6 +15,7 @@ class _RegisterPage extends State<RegisterPage> {
   final nameController = TextEditingController();
   final List<String> items = ['Math', "English", "Chemistry", "Physics", "SOR"];
   List<String> selectedItems = [];
+  bool isChecked = false;
   @override
   void dispose() {
     // Clean up the controller when the widget is disposed.
@@ -78,6 +81,30 @@ class _RegisterPage extends State<RegisterPage> {
                     selectedItems: selectedItems,
                     onStateChanged: () {
                       setState(() {});
+                      print(selectedItems.toString());
+                    },
+                  ),
+                ),
+              ),
+              Checkbox(
+                value: isChecked,
+                onChanged: (bool? value) {
+                  setState(() {
+                    isChecked = value ?? false;
+                  });
+                },
+              ),
+              Center(
+                child: Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                  child: createButton(
+                    label: "Submit",
+                    action: () async {
+                      await register(
+                          subjects: selectedItems,
+                          name: nameController.text,
+                          tutor: isChecked);
                     },
                   ),
                 ),
@@ -89,12 +116,3 @@ class _RegisterPage extends State<RegisterPage> {
     );
   }
 }
-
-// await supabase.from("tutor").insert({
-//             "first_name": "Test",
-//             "last_name": "test",
-//             "email": supabase.auth.currentUser!.email,
-//             "subjects": ["None"],
-//             "students": ["None"],
-//             "userid": supabase.auth.currentUser!.id
-//           });
